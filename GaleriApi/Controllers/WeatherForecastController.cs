@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Araba.Controllers
+namespace GaleriApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

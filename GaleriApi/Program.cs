@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Araba
+namespace GaleriApi
 {
     public class Program
     {

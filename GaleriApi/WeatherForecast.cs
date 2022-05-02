@@ -1,6 +1,6 @@
 using System;
 
-namespace Araba
+namespace GaleriApi
 {
     public class WeatherForecast
     {

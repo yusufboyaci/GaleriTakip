@@ -4,8 +4,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:57238",
-      "sslPort": 44386
+      "applicationUrl": "http://localhost:2982",
+      "sslPort": 44303
     }
   },
   "profiles": {
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Araba": {
+    "GaleriApi": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

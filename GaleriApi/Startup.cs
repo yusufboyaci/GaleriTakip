@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Galeri
+namespace GaleriApi
 {
     public class Startup
     {
@@ -30,7 +30,7 @@ namespace Galeri
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Galeri", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "GaleriApi", Version = "v1" });
             });
         }
 
@@ -41,7 +41,7 @@ namespace Galeri
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Galeri v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GaleriApi v1"));
             }
 
             app.UseHttpsRedirection();
