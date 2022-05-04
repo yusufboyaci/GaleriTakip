@@ -3,15 +3,23 @@
     ViewData["Title"] = "Index";
 }
 
-<table id="GaleriListesi" class="table">
+<table id="GaleriListesi"
+       data-toggle="GaleriListesi"
+       data-click-to-select="true"
+       data-show-columns="true"
+       data-checkbox-header="false"
+       data-multiple-select-row="true"
+       data-toolbar="#toolbar"
+       data-pagination="true"
+       data-search="true">
     <thead>
         <tr>
-            <th scope="col">Galeri Adı</th>
-            <th scope="col">Adres</th>
+            <th id="chk" data-field="state" data-checkbox="true"></th>
+            <th data-field="ad">Galeri Adı</th>
+            <th data-field="adres">Adres</th>
         </tr>
     </thead>
-    <tbody id="Galeri_Listesi">
-    </tbody>
+    <tbody><tr></tr> </tbody>
 </table>
 
 
@@ -19,6 +27,7 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Kayıt
 </button>
+<button id="btnSil" class="btn btn-danger">Sil</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -35,7 +44,7 @@
                     <div class="form-group">
                         <label>Galeri Adı</label>
                         <input type="text" class="form-control" id="GaleriAd" name="ad">
-                        
+
                     </div>
                     <div class="form-group">
                         <label>Adres</label>
@@ -55,11 +64,14 @@
 
 <script>
     $(document).ready(function () {
-        Tablo_Olustur('GaleriListesi');
-        Veri_Listele('https://localhost:44303/api/Galeri/Listele', 'Galeri_Listesi');
+        Galeri_Listele('https://localhost:44303/api/Galeri/Listele', 'GaleriListesi');
         $('#btnEkle').click(function () {
             Veri_Ekle('https://localhost:44303/api/Galeri/Ekle', 'frm');
-        })
+        });
+        $('#btnSil').click(function () {
+            var data = $('#GaleriListesi').bootstrapTable('getSelections')[0];
+            console.log(data);
+            Veri_Sil("https://localhost:44303/api/Galeri/Sil", data);
+        });
     });
 </script>
-

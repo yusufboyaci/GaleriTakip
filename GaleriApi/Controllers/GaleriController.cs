@@ -34,6 +34,7 @@ namespace GaleriApi.Controllers
         public IActionResult Ekle(Galeri nesne)
         {
             db.Add(nesne);
+            db.Activate(nesne.Id);
             return Json("İşlem başarılı");
         }
         [HttpPut("Guncelle")]
@@ -43,34 +44,11 @@ namespace GaleriApi.Controllers
             return Json("İşlem başarılı");
         }
         [HttpDelete("Sil")]
-        public IActionResult Sil(Guid id)
+        public IActionResult Sil(Galeri nesne)
         {
-            db.Remove(id);
+            db.Remove(nesne);
             return Json("İşlem başarılı");
         }
-        //[HttpDelete("Sil")]
-        //public IActionResult Sil(Galeri nesne)
-        //{
-        //    db.Remove(nesne);
-        //    return Json("İşlem başarılı");
-        //}
-        [HttpDelete("ListeSil")]
-        public IActionResult ListeSil(List<Guid> ids)
-        {
-            foreach (Guid item in ids)
-            {
-                db.Remove(item);
-            }
-            return Json("İşlem başarılı");
-        }
-        //[HttpDelete("ListeSil")]
-        //public IActionResult ListeSil(List<Galeri> liste)
-        //{
-        //    foreach (Galeri item in liste)
-        //    {
-        //        db.Remove(item);
-        //    }
-        //    return Json("İşlem başarılı");
-        //}
+
     }
 }

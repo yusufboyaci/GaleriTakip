@@ -33,8 +33,8 @@ namespace ArabaApi.Controllers
         [HttpPost("Ekle")]
         public IActionResult Ekle(Araba nesne)
         {
-            //nesne.Status = Core.Enum.Status.Active;//Repositories te yaz.
             db.Add(nesne);
+            db.Activate(nesne.Id);
             return Json("İşlem başarılı!");
         }
         [HttpPut("Guncelle")]

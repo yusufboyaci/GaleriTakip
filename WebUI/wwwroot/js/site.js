@@ -5,8 +5,22 @@
 function Gonder(lokasyon) {
     window.location.href = lokasyon;
 };
-function Tablo_Olustur(id) {
-    $('#' + id).DataTable();
+function Galeri_Listele(_url, id) {
+    var table = $(`#${id}`);
+    $.ajax({
+        url: _url,
+        method: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (liste) {
+            table.bootstrapTable('load', liste);
+            table.bootstrapTable({ data: liste });
+        },
+        error: function (err) {
+            alert('HATA');
+            console.log(err);
+        }
+    })
 };
 function Veri_Ekle(_url, id, _data = null) {
     var frm = $('#' + id);
@@ -30,21 +44,22 @@ function Veri_Ekle(_url, id, _data = null) {
         }
     })
 };
-function Veri_Listele(_url, id) {
+function Veri_Sil(_url, veri) {
+    var _data = JSON.stringify(veri);
     $.ajax({
         url: _url,
-        method: 'GET',
+        method: 'DELETE',
         dataType: 'json',
+        data: _data,
         async: false,
-        success: function (liste) {
-            for (var i = 0; i < liste.length; i++) {
-                $('#' + id).append(`<tr><td> ${liste[i].ad}</td></tr> 
-                                    <tr><td> ${liste[i].adres}</td></tr>`)
-            }
+        contentType: 'application/json; charset=utf-8',
+        success: function (result) {
+            alert('Veriler Başarıyla Silindi.');
+            window.location.reload();
         },
         error: function (err) {
-            alert('HATA');
             console.log(err);
+            alert('HATA');
         }
-    })
-}
+    });
+};
