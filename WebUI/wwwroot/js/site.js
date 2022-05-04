@@ -63,3 +63,22 @@ function Veri_Sil(_url, veri) {
         }
     });
 };
+function Veri_Getir_GaleriIcin(_url, data) {
+    $.ajax({
+        url: _url,
+        method: 'GET',
+        dataType: 'json',
+        data: { id: data },
+        async: false,
+        success: function (result) {
+            console.log(result);
+            $('#GaleriAdGuncelle').val(result.ad);
+            $('#GaleriAdresGuncelle').val(result.adres);
+        },
+        error: function (err) {
+            console.log(err);
+            alert('HATA');
+        }
+    })
+}
+//function Veri_Guncelle(_url, id, veri)

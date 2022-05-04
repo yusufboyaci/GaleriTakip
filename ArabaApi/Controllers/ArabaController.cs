@@ -44,34 +44,10 @@ namespace ArabaApi.Controllers
             return Json("İşlem başarılı!");
         }
         [HttpDelete("Sil")]
-        public IActionResult Sil(Guid id)
+        public IActionResult Sil(Araba nesne)
         {
-            db.Remove(id);
+            db.Remove(nesne);
             return Json("İşlem başarılı!");
         }
-        //[HttpDelete("Sil")]
-        //public IActionResult Sil(Araba nesne)
-        //{
-        //    db.Remove(nesne);
-        //    return Json("İşlem başarılı!");
-        //}
-        [HttpDelete("ListeSil")]
-        public IActionResult ListeSil(List<Guid> ids)
-        {
-            foreach (Guid id in ids)
-            {
-                db.Remove(id);
-            }
-            return Json("İşlem başarılı!");
-        }
-        //[HttpDelete("ListeSil")]
-        //public IActionResult ListeSil(List<Araba> liste)
-        //{
-        //    foreach (Araba nesne in liste)
-        //    {
-        //        db.Remove(nesne);
-        //    }
-        //    return Json("İşlem başarılı!");
-        //}
     }
 }
