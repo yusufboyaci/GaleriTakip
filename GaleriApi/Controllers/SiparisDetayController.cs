@@ -8,21 +8,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ArabaApi.Controllers
+namespace GaleriApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ArabaController : Controller
+    public class SiparisDetayController : Controller
     {
-        ArabaRepository db;
-        public ArabaController(AppDbContext context)
+        SiparisDetayRepository db;
+        public SiparisDetayController(AppDbContext context)
         {
-            db = new ArabaRepository(context);
+            db = new SiparisDetayRepository(context);
         }
         [HttpGet("Listele")]
         public IActionResult Listele()
         {
-            List<Araba> liste = db.GetActive();
+            List<SiparisDetay> liste = db.GetActive();
             return Json(liste);
         }
         [HttpGet("Getir")]
@@ -31,24 +31,24 @@ namespace ArabaApi.Controllers
             return Json(db.GetById(id));
         }
         [HttpPost("Ekle")]
-        public IActionResult Ekle(Araba nesne)
+        public IActionResult Ekle(SiparisDetay nesne)
         {
             db.Add(nesne);
             db.Activate(nesne.Id);
-            return Json("İşlem başarılı!");
+            return Json("İşlem başarılı");
         }
         [HttpPut("Guncelle")]
-        public IActionResult Guncelle(Araba nesne)
+        public IActionResult Guncelle(SiparisDetay nesne)
         {
             db.Update(nesne);
             db.Activate(nesne.Id);
-            return Json("İşlem başarılı!");
+            return Json("İşlem başarılı");
         }
         [HttpDelete("Sil")]
-        public IActionResult Sil(Araba nesne)
+        public IActionResult Sil(SiparisDetay nesne)
         {
             db.Remove(nesne);
-            return Json("İşlem başarılı!");
+            return Json("İşlem başarılı");
         }
     }
 }

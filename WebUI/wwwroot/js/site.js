@@ -21,7 +21,7 @@ function Galeri_Listele(_url, id) {
             alert('HATA');
             console.log(err);
         }
-    })
+    });
 };
 function Veri_Ekle(_url, id, _data = null) {
     var frm = $('#' + id);
@@ -43,7 +43,7 @@ function Veri_Ekle(_url, id, _data = null) {
             console.log(err);
             alert('HATA');
         }
-    })
+    });
 };
 function Veri_Sil(_url, nesne) {
     var _data = JSON.stringify(nesne);
@@ -81,7 +81,7 @@ function Veri_Getir_GaleriIcin(_url, data) {
             console.log(err);
             alert('HATA');
         }
-    })
+    });
 };
 function GaleriTextBoxDoldur(id, ad, adres) {
     this.id = id;
@@ -109,5 +109,5 @@ function Veri_Guncelle(_url, nesne) {
             console.log(err);
             alert('HATA');
         }
-    })
-}
+    });
+};

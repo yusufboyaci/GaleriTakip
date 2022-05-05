@@ -107,7 +107,7 @@
             Veri_Sil("https://localhost:44303/api/Galeri/Sil", data);
         });
         $('#btnGuncelleModal').click(function () {
-            var data = $('#GaleriListesi').bootstrapTable('getSelections')[0].id;
+            var data = $('#GaleriListesi').bootstrapTable('getSelections')[0].id;//Bootsrapt table da tıklanan satırın id sini verir.
             Veri_Getir_GaleriIcin("https://localhost:44303/api/Galeri/Getir", data);
             $('#btnGuncelle').click(function () {
                 var ad = $('#GaleriAdGuncelle').val();

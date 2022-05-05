@@ -56,7 +56,7 @@ namespace DataAccess.Repositories.Concrete
         {
             _context = context;
         }
-        public Musteri MusteriKullaniciAdiniGetir(string kullaniciAdi)
+        public Musteri MusteriyiKullaniciAdiylaGetir(string kullaniciAdi)
         {
             return GetByDefault(x => x.KullaniciAdi == kullaniciAdi);
         }
