@@ -5,6 +5,7 @@
 function Gonder(lokasyon) {
     window.location.href = lokasyon;
 };
+//Bootsrapt table oluşturma metotu
 function Galeri_Listele(_url, id) {
     var table = $(`#${id}`);
     $.ajax({
@@ -44,8 +45,8 @@ function Veri_Ekle(_url, id, _data = null) {
         }
     })
 };
-function Veri_Sil(_url, veri) {
-    var _data = JSON.stringify(veri);
+function Veri_Sil(_url, nesne) {
+    var _data = JSON.stringify(nesne);
     $.ajax({
         url: _url,
         method: 'DELETE',
@@ -63,6 +64,7 @@ function Veri_Sil(_url, veri) {
         }
     });
 };
+/*Güncelleme butonuna tıklanınca combobox lar dolu olsun diye yazıldı*/
 function Veri_Getir_GaleriIcin(_url, data) {
     $.ajax({
         url: _url,
@@ -80,5 +82,32 @@ function Veri_Getir_GaleriIcin(_url, data) {
             alert('HATA');
         }
     })
+};
+function GaleriTextBoxDoldur(id, ad, adres) {
+    this.id = id;
+    this.ad = ad;
+    this.adres = adres;
+};
+function Veri_Guncelle(_url, nesne) {
+    if (nesne != null) {
+        var _data = JSON.stringify(nesne);
+    }
+    else {
+        alert('Güncelleme yapılacak alan boş geldiği için Hata meydana geldi!');
+    }
+    $.ajax({
+        url: _url,
+        method: 'PUT',
+        data: _data,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function (result) {
+            alert('Güncelleme işlemi başarıyla gerçekleşti!');
+            window.location.reload();
+        },
+        error: function (err) {
+            console.log(err);
+            alert('HATA');
+        }
+    })
 }
-//function Veri_Guncelle(_url, id, veri)

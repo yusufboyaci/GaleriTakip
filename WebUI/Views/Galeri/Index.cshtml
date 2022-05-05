@@ -23,7 +23,7 @@
 </table>
 
 
-<!-- Button trigger modal -->
+<!-- Button modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ekleModal">
     Kayıt
 </button>
@@ -43,7 +43,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="frm">
+                <form id="frmEkle">
                     <div class="form-group">
                         <label>Galeri Adı</label>
                         <input type="text" class="form-control" id="GaleriAd" name="ad">
@@ -74,7 +74,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="frm">
+                <form id="frmGuncelle">
                     <div class="form-group">
                         <label>Galeri Adı</label>
                         <input type="text" class="form-control" id="GaleriAdGuncelle" name="ad">
@@ -100,7 +100,7 @@
     $(document).ready(function () {
         Galeri_Listele('https://localhost:44303/api/Galeri/Listele', 'GaleriListesi');
         $('#btnEkle').click(function () {
-            Veri_Ekle('https://localhost:44303/api/Galeri/Ekle', 'frm');
+            Veri_Ekle('https://localhost:44303/api/Galeri/Ekle', 'frmEkle');
         });
         $('#btnSil').click(function () {
             var data = $('#GaleriListesi').bootstrapTable('getSelections')[0];
@@ -109,6 +109,13 @@
         $('#btnGuncelleModal').click(function () {
             var data = $('#GaleriListesi').bootstrapTable('getSelections')[0].id;
             Veri_Getir_GaleriIcin("https://localhost:44303/api/Galeri/Getir", data);
-        })
+            $('#btnGuncelle').click(function () {
+                var ad = $('#GaleriAdGuncelle').val();
+                var adres = $('#GaleriAdresGuncelle').val();
+                const galeri = new GaleriTextBoxDoldur(data, ad, adres);
+                Veri_Guncelle('https://localhost:44303/api/Galeri/Guncelle', galeri);
+            });
+        });
+       
     });
 </script>

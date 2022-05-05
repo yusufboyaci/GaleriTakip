@@ -41,6 +41,7 @@ namespace GaleriApi.Controllers
         public IActionResult Guncelle(Galeri nesne)
         {
             db.Update(nesne);
+            db.Activate(nesne.Id);
             return Json("İşlem başarılı");
         }
         [HttpDelete("Sil")]
