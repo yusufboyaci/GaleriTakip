@@ -3,5 +3,20 @@
     ViewData["Title"] = "Arabalar";
 }
 
-<h1>Araba Tablosu</h1>
+<h1>Araba Listesi</h1>
+<table id="ArabaListesi"
+       data-toggle="ArabaListesi"
+       data-click-to-select="true"
+       data-show-colums="true"
+       data-checkbox-header="false"
+       data-multiple-select-row="true"
+       data-toolbar="#toolbar"
+       data-pagination="true"
+       data-search="true">
+    <thead>
+        <tr>
+            <th id="chk" data-field="state" data-checkbox-header="true"></th>
 
+        </tr>
+    </thead>
+</table>
