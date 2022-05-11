@@ -25,3 +25,80 @@
     </thead>
     <tbody><tr></tr></tbody>
 </table>
+<!-- Button modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ekleModal">
+    Kayıt
+</button>
+<button id="btnGuncelleModal" type="button" class="btn btn-info" data-toggle="modal" data-target="#guncelleModal">
+    Guncelle
+</button>
+<button id="btnSil" class="btn btn-danger">Sil</button>
+<!-- Modal Ekleme İçin-->
+<div class="modal fade" id="ekleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Kayıt İşlemi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frmEkle">
+                    <div class="form-group">
+                        <label>Araba</label>
+                        <input type="text" class="form-control" id="ArabaAd" name="ad">
+                    </div>
+                    <div class="form-group">
+                        <label>Ücret</label>
+                        <input type="number" class="form-control" id="ArabaUcret" name="ucret">
+                    </div>
+                    <div class="form-group">
+                        <label>Stok</label>
+                        <input type="number" class="form-control" id="ArabaStok" name="stok">
+                    </div>
+                    <div class="form-group">
+                        <label>Birim</label>
+                        <input type="text" class="form-control" id="ArabaBirim" name="birim">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <button id="btnEkle" type="button" class="btn btn-primary">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Güncelleme İçin -->
+<div class="modal fade" id="guncelleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Kayıt İşlemi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frmGuncelle">
+                    <div class="form-group">
+                        <label>Galeri Adı</label>
+                        <input type="text" class="form-control" id="GaleriAdGuncelle" name="ad">
+
+                    </div>
+                    <div class="form-group">
+                        <label>Adres</label>
+                        <input type="text" class="form-control" id="GaleriAdresGuncelle" name="adres">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <button id="btnGuncelle" type="button" class="btn btn-primary">Guncelle</button>
+            </div>
+        </div>
+    </div>
+</div>
+

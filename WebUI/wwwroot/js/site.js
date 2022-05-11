@@ -2,6 +2,14 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+$(document).ready(function () {
+    setTimeout(function () {
+        $("div.loading").fadeOut("slow", function () {
+            $("div.loading").hide();
+        });
+    }, 500);
+})
 function Gonder(lokasyon) {
     window.location.href = lokasyon;
 };
