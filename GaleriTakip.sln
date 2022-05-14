@@ -11,9 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{ACC801B5-CD05-43DB-828C-7A4D1E9C4551}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GaleriApi", "GaleriApi\GaleriApi.csproj", "{2C32B835-7138-4BB6-AF46-544995C07EEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GaleriApi", "GaleriApi\GaleriApi.csproj", "{2C32B835-7138-4BB6-AF46-544995C07EEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArabaApi", "ArabaApi\ArabaApi.csproj", "{F556D645-5212-4F6A-A3AE-277B907AF16B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArabaApi", "ArabaApi\ArabaApi.csproj", "{F556D645-5212-4F6A-A3AE-277B907AF16B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlCodes", "SqlCodes", "{44EA7BD6-5542-4616-9375-F14113B19FD5}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\OneDrive\Masaüstü\V_ArabaVeGaleriTablosuSqlCode.sql = ..\..\..\..\OneDrive\Masaüstü\V_ArabaVeGaleriTablosuSqlCode.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

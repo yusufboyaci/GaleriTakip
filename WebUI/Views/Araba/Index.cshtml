@@ -20,13 +20,14 @@
             <th data-field="ucret"></th>
             <th data-field="stok"></th>
             <th data-field="birim"></th>
+            <th data-field="resimYolu"></th>
             <th data-field="galeriId"></th>
         </tr>
     </thead>
     <tbody><tr></tr></tbody>
 </table>
 <!-- Button modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ekleModal">
+<button id="btnEkleModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ekleModal">
     Kayıt
 </button>
 <button id="btnGuncelleModal" type="button" class="btn btn-info" data-toggle="modal" data-target="#guncelleModal">
@@ -47,19 +48,33 @@
                 <form id="frmEkle">
                     <div class="form-group">
                         <label>Araba</label>
-                        <input type="text" class="form-control" id="ArabaAd" name="ad">
+                        <input type="text" class="form-control" id="ArabaAdEkle" name="ad"/>
                     </div>
                     <div class="form-group">
                         <label>Ücret</label>
-                        <input type="number" class="form-control" id="ArabaUcret" name="ucret">
+                        <input type="number" class="form-control" id="ArabaUcretEkle" name="ucret"/>
                     </div>
                     <div class="form-group">
                         <label>Stok</label>
-                        <input type="number" class="form-control" id="ArabaStok" name="stok">
+                        <input type="number" class="form-control" id="ArabaStokEkle" name="stok"/>
                     </div>
                     <div class="form-group">
                         <label>Birim</label>
-                        <input type="text" class="form-control" id="ArabaBirim" name="birim">
+                        <input type="text" class="form-control" id="ArabaBirimEkle" name="birim"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Resim</label>
+                        <input type="file" class="form-control-file" id="ArabaResimEkle" name="resim" accept=".jpg,.png,.gif,.jpeg"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Galeri</label>
+                        <select type="text" class="form-control" id="ArabaGaleriEkle" name="galeriAd">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Galeri Adresi</label>
+                        <select type="text" class="form-control" id="ArabaGaleriAdresEkle" name="galeriAdres">
+                        </select>
                     </div>
                 </form>
             </div>
@@ -76,7 +91,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Kayıt İşlemi</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Güncelleme İşlemi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -84,13 +99,34 @@
             <div class="modal-body">
                 <form id="frmGuncelle">
                     <div class="form-group">
-                        <label>Galeri Adı</label>
-                        <input type="text" class="form-control" id="GaleriAdGuncelle" name="ad">
-
+                        <label>Araba</label>
+                        <input type="text" class="form-control" id="ArabaAdGuncelle" name="ad"/>
                     </div>
                     <div class="form-group">
-                        <label>Adres</label>
-                        <input type="text" class="form-control" id="GaleriAdresGuncelle" name="adres">
+                        <label>Ücret</label>
+                        <input type="number" class="form-control" id="ArabaUcretGuncelle" name="ucret"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Stok</label>
+                        <input type="number" class="form-control" id="ArabaStokGuncelle" name="stok"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Birim</label>
+                        <input type="text" class="form-control" id="ArabaBirimGuncelle" name="birim"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Resim</label>
+                        <input type="file" class="form-control-file" id="ArabaResimGuncelle" name="resim" accept=".jpg,.png,.gif,.jpeg"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Galeri</label>
+                        <select type="text" class="form-control" id="ArabaGaleriGuncelle" name="galeriAd">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Galeri Adresi</label>
+                        <select type="text" class="form-control" id="ArabaGaleriAdresEkle" name="galeriAdres">
+                        </select>
                     </div>
                 </form>
             </div>
@@ -101,4 +137,35 @@
         </div>
     </div>
 </div>
-
+<script>
+    var url = '@ViewBag.ArabaUrl';
+    var galeriUrl = '@ViewBag.GaleriUrl';
+    $(document).ready(function () {
+        Veri_Listele(url + '/api/Araba/ArabaVeGaleriTablosuListele', 'ArabaListesi');
+        $('#btnEkleModal').click(function () {
+            GaleriListesi_Listele(galeriUrl + '/api/Galeri/Listele','ArabaGaleriEkle','ArabaGaleriAdresEkle');
+        });
+        $('#btnEkle').click(function () {
+            Veri_Ekle(url + '/api/Araba/Ekle', 'frmEkle');
+        });
+        $('#btnSil').click(function () {
+            var data = $('#ArabaListesi').bootsrapTable('getSelections')[0];
+            Veri_Sil(url + '/api/Araba/Sil', data);
+        });
+        $('#btnGuncelleModal').click(function () {
+            var data = $('#GaleriListesi').bootsrapTable('getSelections')[0].id;
+            Veri_Getir_ArabaIcin(url + '/api/Araba/Getir', data);
+            $('#btnGuncelle').click(function () {
+                var ad = $('#ArabaAdGuncelle').val();
+                var ucret = $('#ArabaUcretGuncelle').val();
+                var stok = $('#ArabaStokGuncelle').val();
+                var birim = $('#ArabaBirimGuncelle').val();
+                var resimYolu = $('#ArabaResimGuncelle').val();
+                var galeriId = $('#ArabaGaleriGuncelle').val();
+                var adGaleri = $('#ArabaGaleriGuncelle option').val();
+                const araba = new ArabaTextBoxDoldur(data, ad, ucret, stok, birim, resimYolu, galeriId, adGaleri);
+                Veri_Guncelle(url + '/api/Araba/Guncelle', araba);
+            });
+        });
+    });
+</script>

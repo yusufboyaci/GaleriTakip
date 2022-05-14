@@ -10,6 +10,8 @@ namespace WebUI.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.ArabaUrl = "https://localhost:44373";
+            ViewBag.GaleriUrl = "https://localhost:44303";
             return View();
         }
     }

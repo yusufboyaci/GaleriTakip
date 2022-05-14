@@ -14,7 +14,7 @@ function Gonder(lokasyon) {
     window.location.href = lokasyon;
 };
 //Bootsrapt table oluşturma metotu
-function Galeri_Listele(_url, id) {
+function Veri_Listele(_url, id) {
     var table = $(`#${id}`);
     $.ajax({
         url: _url,
@@ -81,7 +81,6 @@ function Veri_Getir_GaleriIcin(_url, data) {
         data: { id: data },
         async: false,
         success: function (result) {
-            console.log(result);
             $('#GaleriAdGuncelle').val(result.ad);
             $('#GaleriAdresGuncelle').val(result.adres);
         },
@@ -119,3 +118,61 @@ function Veri_Guncelle(_url, nesne) {
         }
     });
 };
+function Veri_Getir_ArabaIcin(_url, data) {
+    $.ajax({
+        url: _url,
+        method: 'GET',
+        dataType: 'json',
+        data: { id: data },
+        async: false,
+        success: function (result) {
+            $('#ArabaAdGuncelle').val(result.ad);
+            $('#ArabaUcretGuncelle').val(result.ucret);
+            $('#ArabaStokGuncelle').val(result.stok);
+            $('#ArabaBirimGuncelle').val(result.birim);
+            $('#ArabaResimGuncelle').val(result.resimYolu);
+            $('#ArabaGaleriGuncelle').val(result.galeriId);
+            $('#ArabaGaleriGuncelle option').val(result.galeriAdi);
+        },
+        error: function (err) {
+            console.log(err);
+            alert('HATA');
+        }
+    });
+};
+function ArabaTextBoxDoldur(id, ad, ucret, stok, birim, resimYolu, galeriId, galeriAdi) {
+    this.id = id;
+    this.ad = ad;
+    this.ucret = ucret;
+    this.stok = stok;
+    this.birim = birim;
+    this.resimYolu = resimYolu;
+    this.galeriId = galeriId;
+    this.galeriAdi = galeriAdi;
+};
+function GaleriListesi_Listele(_url, id_1, id_2) {
+    var obj1 = $(`#${id_1}`);
+    var obj2 = $(`#${id_2}`);
+    obj1.empty();
+    obj2.empty();
+    $.ajax({
+        url: _url,
+        method: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (result) {
+            for (var i = 0; i < result.length; i++) {
+                obj1.append(
+                    `<option value="${result[i].id}">${result[i].ad}</option>`
+                );
+                obj2.append(
+                    `<option value="${result[i].id}">${result[i].adres}</option>`
+                );
+            }
+        },
+        error: function (err) {
+            console.log(err);
+            alert('HATA');
+        }
+    });
+}

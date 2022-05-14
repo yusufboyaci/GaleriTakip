@@ -1,6 +1,7 @@
 ﻿using DataAccess.Context;
 using DataAccess.Repositories.Concrete;
 using Entities;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -15,15 +16,20 @@ namespace ArabaApi.Controllers
     public class ArabaController : Controller
     {
         ArabaRepository db;
-        public ArabaController(AppDbContext context)
+        public ArabaController(AppDbContext context, IWebHostEnvironment env)
         {
-            db = new ArabaRepository(context);
+            db = new ArabaRepository(context, env);
         }
         [HttpGet("Listele")]
         public IActionResult Listele()
         {
             List<Araba> liste = db.GetActive();
             return Json(liste);
+        }
+        [HttpGet("ArabaVeGaleriTablosuListele")]
+        public IActionResult ArabaVeGaleriTablosuListele()
+        {
+            return Json(db.ArabaVeGaleriTablosuListele());
         }
         [HttpGet("Getir")]
         public IActionResult Getir(Guid id)
@@ -34,6 +40,7 @@ namespace ArabaApi.Controllers
         public IActionResult Ekle(Araba nesne)
         {
             db.Add(nesne);
+            db.ResimKaydet(nesne);
             db.Activate(nesne.Id);
             return Json("İşlem başarılı!");
         }

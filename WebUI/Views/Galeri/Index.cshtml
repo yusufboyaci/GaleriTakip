@@ -68,7 +68,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Kayıt İşlemi</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Güncelleme İşlemi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -98,7 +98,7 @@
 
 <script>
     $(document).ready(function () {
-        Galeri_Listele('https://localhost:44303/api/Galeri/Listele', 'GaleriListesi');
+        Veri_Listele('https://localhost:44303/api/Galeri/Listele', 'GaleriListesi');
         $('#btnEkle').click(function () {
             Veri_Ekle('https://localhost:44303/api/Galeri/Ekle', 'frmEkle');
         });

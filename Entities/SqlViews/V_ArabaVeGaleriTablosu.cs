@@ -1,26 +1,25 @@
-﻿using Core.Entity.Concrete;
+﻿using Core.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-namespace Entities
+
+namespace Entities.SqlViews
 {
-    public class Araba : CoreEntity
+    [NotMapped]
+    public class V_ArabaVeGaleriTablosu
     {
+        public Guid Id { get; set; }
+        public Status Status { get; set; }
         public string Ad { get; set; }
         public decimal? Ucret { get; set; }
         public int? Stok { get; set; }
         public string Birim { get; set; }
         public string ResimYolu { get; set; }
-        [NotMapped]
-        public IFormFile Resim { get; set; }
-        public Guid GaleriId { get; set; }//FK
-        //Navigation Property
-        public virtual Galeri Galeri { get; set; }
-        public virtual List<SiparisDetay> SiparisDetaylar { get; set; }
-
+        public Guid GaleriId { get; set; }
+        public string GaleriAd { get; set; }
+        public string GaleriAdres { get; set; }
     }
 }

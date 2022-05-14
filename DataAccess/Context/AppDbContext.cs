@@ -1,6 +1,8 @@
 ﻿using Core.Entity.Concrete;
 using Entities;
 using Entities.Mapping;
+using Entities.SqlViews;
+using Entities.SqlViewsMapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -23,6 +25,7 @@ namespace DataAccess.Context
         public DbSet<Araba> Arabalar { get; set; }
         public DbSet<Siparis> Siparisler { get; set; }
         public DbSet<SiparisDetay> SiparisDetaylar { get; set; }
+        public DbSet<V_ArabaVeGaleriTablosu> ArabaVeGaleriTablosu { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ArabaMap());
@@ -30,6 +33,8 @@ namespace DataAccess.Context
             modelBuilder.ApplyConfiguration(new MusteriMap());
             modelBuilder.ApplyConfiguration(new SiparisMap());
             modelBuilder.ApplyConfiguration(new SiparisDetayMap());
+            modelBuilder.ApplyConfiguration(new V_ArabaVeGaleriTablosuMap());
+            modelBuilder.Entity<V_ArabaVeGaleriTablosu>().ToView("V_ArabaVeGaleriTablosu");
             base.OnModelCreating(modelBuilder);
         }
         public override int SaveChanges()
