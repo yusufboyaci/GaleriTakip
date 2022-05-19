@@ -12,6 +12,7 @@ namespace WebUI.Controllers
         {
             ViewBag.ArabaUrl = "https://localhost:44373";
             ViewBag.GaleriUrl = "https://localhost:44303";
+            ViewBag.DosyaUrl = "https://localhost:44314";
             return View();
         }
     }

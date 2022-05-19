@@ -16,9 +16,9 @@ namespace ArabaApi.Controllers
     public class ArabaController : Controller
     {
         ArabaRepository db;
-        public ArabaController(AppDbContext context, IWebHostEnvironment env)
+        public ArabaController(AppDbContext context)
         {
-            db = new ArabaRepository(context, env);
+            db = new ArabaRepository(context);
         }
         [HttpGet("Listele")]
         public IActionResult Listele()
@@ -40,7 +40,6 @@ namespace ArabaApi.Controllers
         public IActionResult Ekle(Araba nesne)
         {
             db.Add(nesne);
-            db.ResimKaydet(nesne);
             db.Activate(nesne.Id);
             return Json("İşlem başarılı!");
         }

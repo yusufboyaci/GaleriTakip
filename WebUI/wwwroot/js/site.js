@@ -130,7 +130,6 @@ function Veri_Getir_ArabaIcin(_url, data) {
             $('#ArabaUcretGuncelle').val(result.ucret);
             $('#ArabaStokGuncelle').val(result.stok);
             $('#ArabaBirimGuncelle').val(result.birim);
-            $('#ArabaResimGuncelle').val(result.resimYolu);
             $('#ArabaGaleriGuncelle').val(result.galeriId);
             $('#ArabaGaleriGuncelle option').val(result.galeriAdi);
         },
@@ -140,13 +139,12 @@ function Veri_Getir_ArabaIcin(_url, data) {
         }
     });
 };
-function ArabaTextBoxDoldur(id, ad, ucret, stok, birim, resimYolu, galeriId, galeriAdi) {
+function ArabaTextBoxDoldur(id, ad, ucret, stok, birim, galeriId, galeriAdi) {
     this.id = id;
     this.ad = ad;
     this.ucret = ucret;
     this.stok = stok;
     this.birim = birim;
-    this.resimYolu = resimYolu;
     this.galeriId = galeriId;
     this.galeriAdi = galeriAdi;
 };
@@ -176,3 +174,29 @@ function GaleriListesi_Listele(_url, id_1, id_2) {
         }
     });
 }
+//Dosya yükleme için kullanılan metottur.
+function uploadFile(_url, id, name) {
+    var files = document.getElementById(id).files;
+    if (files.length > 0) {
+        if (window.FormData !== undefined) {
+            var data = new FormData();
+            for (var i = 0; i < files.length; i++) {
+                data.append(name + i, files[i]);
+            }
+            $.ajax({
+                method: 'POST',
+                url: _url,
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (result) {
+                    alert('Dosya Yüklendi');
+                },
+                error: function (err) {
+                    console.log(err);
+                    alert('HATA');
+                }
+            });
+        }
+    }
+};

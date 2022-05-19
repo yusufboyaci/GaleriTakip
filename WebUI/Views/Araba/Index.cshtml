@@ -45,7 +45,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="frmEkle" enctype="multipart/form-data">
+                @*<form id="frmEkle" enctype="multipart/form-data">*@
+                <form id="frmEkle"> 
                     <div class="form-group">
                         <label>Araba</label>
                         <input type="text" class="form-control" id="ArabaAdEkle" name="ad"/>
@@ -64,7 +65,8 @@
                     </div>
                     <div class="form-group">
                         <label>Resim</label>
-                        <input type="file" class="form-control-file" id="ArabaResimEkle" name="resim" accept=".jpg,.png,.gif,.jpeg"/>
+                        @*<input type="file" class="form-control-file" id="ArabaResimEkle" name="resim" accept=".jpg,.png,.gif,.jpeg"/>*@
+                        <input type="file" class="form-control-file" id="ArabaResimEkle" name="resim"/>
                     </div>
                     <div class="form-group">
                         <label>Galeri</label>
@@ -116,7 +118,7 @@
                     </div>
                     <div class="form-group">
                         <label>Resim</label>
-                        <input type="file" class="form-control-file" id="ArabaResimGuncelle" name="resim" accept=".jpg,.png,.gif,.jpeg"/>
+                       <input type="file" class="form-control-file" id="ArabaResimGuncelle" name="resim" accept=".jpg,.png,.gif,.jpeg"/>
                     </div>
                     <div class="form-group">
                         <label>Galeri</label>
@@ -140,13 +142,15 @@
 <script>
     var url = '@ViewBag.ArabaUrl';
     var galeriUrl = '@ViewBag.GaleriUrl';
+    var dosyaUrl = '@ViewBag.DosyaUrl';
     $(document).ready(function () {
         Veri_Listele(url + '/api/Araba/ArabaVeGaleriTablosuListele', 'ArabaListesi');
         $('#btnEkleModal').click(function () {
-            GaleriListesi_Listele(galeriUrl + '/api/Galeri/Listele','ArabaGaleriEkle','ArabaGaleriAdresEkle');
+            GaleriListesi_Listele(galeriUrl + '/api/Galeri/Listele', 'ArabaGaleriEkle', 'ArabaGaleriAdresEkle');
         });
         $('#btnEkle').click(function () {
             Veri_Ekle(url + '/api/Araba/Ekle', 'frmEkle');
+            uploadFile(dosyaUrl + '/api/Dosya/UploadFile', 'ArabaResimEkle', 'resim');
         });
         $('#btnSil').click(function () {
             var data = $('#ArabaListesi').bootsrapTable('getSelections')[0];
@@ -160,7 +164,6 @@
                 var ucret = $('#ArabaUcretGuncelle').val();
                 var stok = $('#ArabaStokGuncelle').val();
                 var birim = $('#ArabaBirimGuncelle').val();
-                var resimYolu = $('#ArabaResimGuncelle').val();
                 var galeriId = $('#ArabaGaleriGuncelle').val();
                 var adGaleri = $('#ArabaGaleriGuncelle option').val();
                 const araba = new ArabaTextBoxDoldur(data, ad, ucret, stok, birim, resimYolu, galeriId, adGaleri);

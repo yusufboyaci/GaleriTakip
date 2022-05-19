@@ -8,38 +8,20 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
 
 namespace DataAccess.Repositories.Concrete
 {
     public class ArabaRepository : Repository<Araba>
     {
         private readonly AppDbContext _context;
-        private readonly IWebHostEnvironment _env;
-        public ArabaRepository(AppDbContext context, IWebHostEnvironment env) : base(context)
+        public ArabaRepository(AppDbContext context) : base(context)
         {
             _context = context;
-            _env = env;
         }
         public List<V_ArabaVeGaleriTablosu> ArabaVeGaleriTablosuListele()
         {
             return _context.ArabaVeGaleriTablosu.Where(x => x.Status == Status.Active).ToList();
-        }
-        public void ResimKaydet(Araba araba)
-        {
-            if (araba.Resim != null)
-            {
-                string resimler = Path.Combine(_env.WebRootPath,"images");
-                if (araba.Resim.Length > 0)
-                {
-                    using(FileStream file = new FileStream(Path.Combine(resimler,araba.Resim.FileName), FileMode.Create))
-                    {
-                        araba.Resim.CopyTo(file);
-                    }
-                }
-                araba.ResimYolu = araba.Resim.FileName;
-            }
-        }
+        }       
     }
     public class GaleriRepository : Repository<Galeri>
     {

@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlCodes", "SqlCodes", "{44
 		..\..\..\..\OneDrive\Masaüstü\V_ArabaVeGaleriTablosuSqlCode.sql = ..\..\..\..\OneDrive\Masaüstü\V_ArabaVeGaleriTablosuSqlCode.sql
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DosyaApi", "DosyaApi\DosyaApi.csproj", "{8EFF32F7-B2FA-4DA2-89E2-D2DF63702392}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{F556D645-5212-4F6A-A3AE-277B907AF16B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F556D645-5212-4F6A-A3AE-277B907AF16B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F556D645-5212-4F6A-A3AE-277B907AF16B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EFF32F7-B2FA-4DA2-89E2-D2DF63702392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EFF32F7-B2FA-4DA2-89E2-D2DF63702392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EFF32F7-B2FA-4DA2-89E2-D2DF63702392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EFF32F7-B2FA-4DA2-89E2-D2DF63702392}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
