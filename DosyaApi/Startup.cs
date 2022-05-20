@@ -28,6 +28,7 @@ namespace DosyaApi
         {
 
             services.AddControllers();
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DosyaApi", Version = "v1" });
@@ -45,7 +46,7 @@ namespace DosyaApi
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseRouting();
 
             app.UseAuthorization();

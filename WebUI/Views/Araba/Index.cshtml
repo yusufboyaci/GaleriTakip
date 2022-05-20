@@ -15,13 +15,13 @@
        data-search="true">
     <thead>
         <tr>
-            <th id="chk" data-field="state" data-checkbox-header="true"></th>
-            <th data-field="ad"></th>
-            <th data-field="ucret"></th>
-            <th data-field="stok"></th>
-            <th data-field="birim"></th>
-            <th data-field="resimYolu"></th>
-            <th data-field="galeriId"></th>
+            <th id="chk" data-field="state" data-checkbox="true"></th>
+            <th data-field="ad">Araba</th>
+            <th data-field="ucret">Fiyat</th>
+            <th data-field="stok">Miktar</th>
+            <th data-field="birim">Birim</th>
+            <th data-field="galeriId">Galeri Adı</th>
+            <th data-field="galeriId">Galeri Adres</th>
         </tr>
     </thead>
     <tbody><tr></tr></tbody>
@@ -45,7 +45,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                @*<form id="frmEkle" enctype="multipart/form-data">*@
                 <form id="frmEkle"> 
                     <div class="form-group">
                         <label>Araba</label>
@@ -65,17 +64,16 @@
                     </div>
                     <div class="form-group">
                         <label>Resim</label>
-                        @*<input type="file" class="form-control-file" id="ArabaResimEkle" name="resim" accept=".jpg,.png,.gif,.jpeg"/>*@
                         <input type="file" class="form-control-file" id="ArabaResimEkle" name="resim"/>
                     </div>
                     <div class="form-group">
                         <label>Galeri</label>
-                        <select type="text" class="form-control" id="ArabaGaleriEkle" name="galeriAd">
+                        <select type="text" class="form-control" id="ArabaGaleriEkle" name="galeriId">
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Galeri Adresi</label>
-                        <select type="text" class="form-control" id="ArabaGaleriAdresEkle" name="galeriAdres">
+                        <select type="text" class="form-control" id="ArabaGaleriAdresEkle" name="galeriId">
                         </select>
                     </div>
                 </form>
@@ -149,8 +147,8 @@
             GaleriListesi_Listele(galeriUrl + '/api/Galeri/Listele', 'ArabaGaleriEkle', 'ArabaGaleriAdresEkle');
         });
         $('#btnEkle').click(function () {
-            Veri_Ekle(url + '/api/Araba/Ekle', 'frmEkle');
             uploadFile(dosyaUrl + '/api/Dosya/UploadFile', 'ArabaResimEkle', 'resim');
+            Veri_Ekle(url + '/api/Araba/Ekle', 'frmEkle');
         });
         $('#btnSil').click(function () {
             var data = $('#ArabaListesi').bootsrapTable('getSelections')[0];

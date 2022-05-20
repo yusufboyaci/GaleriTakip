@@ -151,8 +151,8 @@ function ArabaTextBoxDoldur(id, ad, ucret, stok, birim, galeriId, galeriAdi) {
 function GaleriListesi_Listele(_url, id_1, id_2) {
     var obj1 = $(`#${id_1}`);
     var obj2 = $(`#${id_2}`);
-    obj1.empty();
-    obj2.empty();
+   obj1.empty();
+   obj2.empty();
     $.ajax({
         url: _url,
         method: 'GET',
@@ -161,9 +161,11 @@ function GaleriListesi_Listele(_url, id_1, id_2) {
         success: function (result) {
             for (var i = 0; i < result.length; i++) {
                 obj1.append(
+                    /*`<option name="galeriAd" value="${result[i].id}">${result[i].ad}</option>`*/
                     `<option value="${result[i].id}">${result[i].ad}</option>`
                 );
                 obj2.append(
+                    //`<option name="galeriAdres" value="${result[i].id}">${result[i].adres}</option>`
                     `<option value="${result[i].id}">${result[i].adres}</option>`
                 );
             }
