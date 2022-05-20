@@ -22,6 +22,7 @@ namespace Entities
         public string Email { get; set; }
         public string Adres { get; set; }
         public string TelefonNumarasi { get; set; }
+        public string DosyaYolu { get; set; }
         public Role? Role { get; set; }
         public DateTime? DogumGunu { get; set; }
         public virtual List<Siparis> Siparisler { get; set; }

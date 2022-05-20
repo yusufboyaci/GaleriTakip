@@ -15,6 +15,7 @@ namespace Entities
         }
         public Guid MusteriId { get; set; }//FK
         public bool OnaylandiMi { get; set; }
+        public string DosyaYolu { get; set; }
         //Navigation Properties
         public virtual Musteri Musteri { get; set; }
         public virtual List<SiparisDetay> SiparisDetaylar { get; set; }

@@ -12,6 +12,7 @@ namespace Entities
         public Guid ArabaId { get; set; }//FK
         public decimal? BirimFiyat { get; set; }
         public int? Miktar { get; set; }
+        public string DosyaYolu { get; set; }
         //Navigation Properties
         public virtual Siparis Siparis { get; set; }
         public virtual Araba Araba { get; set; }

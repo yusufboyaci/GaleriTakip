@@ -17,6 +17,7 @@ namespace Entities.SqlViews
         public decimal? Ucret { get; set; }
         public int? Stok { get; set; }
         public string Birim { get; set; }
+        public string DosyaYolu { get; set; }
         public Guid GaleriId { get; set; }
         public string GaleriAd { get; set; }
         public string GaleriAdres { get; set; }

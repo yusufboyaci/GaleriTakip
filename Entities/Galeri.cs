@@ -11,6 +11,7 @@ namespace Entities
     {
         public string Ad { get; set; }
         public string Adres { get; set; }
+        public string DosyaYolu { get; set; }
         //Navigation Property
         public virtual List<Araba> Arabalar { get; set; }
     }
