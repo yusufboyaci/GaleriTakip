@@ -15,6 +15,8 @@ namespace Entities
         public int? Stok { get; set; }
         public string Birim { get; set; }
         public string DosyaYolu { get; set; }
+        [NotMapped]
+        public IFormFile Resim { get; set; }
         public Guid GaleriId { get; set; }//FK
         //Navigation Property
         public virtual Galeri Galeri { get; set; }

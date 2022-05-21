@@ -46,26 +46,27 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="frmEkle"> 
+                <form id="frmEkle">
                     <div class="form-group">
                         <label>Araba</label>
-                        <input type="text" class="form-control" id="ArabaAdEkle" name="ad"/>
+                        <input type="text" class="form-control" id="ArabaAdEkle" name="ad" />
                     </div>
                     <div class="form-group">
                         <label>Ücret</label>
-                        <input type="number" class="form-control" id="ArabaUcretEkle" name="ucret"/>
+                        <input type="number" class="form-control" id="ArabaUcretEkle" name="ucret" />
                     </div>
                     <div class="form-group">
                         <label>Stok</label>
-                        <input type="number" class="form-control" id="ArabaStokEkle" name="stok"/>
+                        <input type="number" class="form-control" id="ArabaStokEkle" name="stok" />
                     </div>
                     <div class="form-group">
                         <label>Birim</label>
-                        <input type="text" class="form-control" id="ArabaBirimEkle" name="birim"/>
+                        <input type="text" class="form-control" id="ArabaBirimEkle" name="birim" />
                     </div>
                     <div class="form-group">
                         <label>Resim</label>
-                        <input type="file" class="form-control-file" id="ArabaResimEkle" name="resim"/>
+                        <input type="file" class="form-control-file" id="ArabaResimEkle" name="resim" />
+                        <input type="hidden" name="dosyaYolu" id="dosyaYolu" />
                     </div>
                     <div class="form-group">
                         <label>Galeri</label>
@@ -101,23 +102,23 @@
                 <form id="frmGuncelle" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Araba</label>
-                        <input type="text" class="form-control" id="ArabaAdGuncelle" name="ad"/>
+                        <input type="text" class="form-control" id="ArabaAdGuncelle" name="ad" />
                     </div>
                     <div class="form-group">
                         <label>Ücret</label>
-                        <input type="number" class="form-control" id="ArabaUcretGuncelle" name="ucret"/>
+                        <input type="number" class="form-control" id="ArabaUcretGuncelle" name="ucret" />
                     </div>
                     <div class="form-group">
                         <label>Stok</label>
-                        <input type="number" class="form-control" id="ArabaStokGuncelle" name="stok"/>
+                        <input type="number" class="form-control" id="ArabaStokGuncelle" name="stok" />
                     </div>
                     <div class="form-group">
                         <label>Birim</label>
-                        <input type="text" class="form-control" id="ArabaBirimGuncelle" name="birim"/>
+                        <input type="text" class="form-control" id="ArabaBirimGuncelle" name="birim" />
                     </div>
                     <div class="form-group">
                         <label>Resim</label>
-                       <input type="file" class="form-control-file" id="ArabaResimGuncelle" name="resim" accept=".jpg,.png,.gif,.jpeg"/>
+                        <input type="file" class="form-control-file" id="ArabaResimGuncelle" name="resim" accept=".jpg,.png,.gif,.jpeg" />
                     </div>
                     <div class="form-group">
                         <label>Galeri</label>
@@ -148,8 +149,7 @@
             GaleriListesi_Listele(galeriUrl + '/api/Galeri/Listele', 'ArabaGaleriEkle', 'ArabaGaleriAdresEkle');
         });
         $('#btnEkle').click(function () {
-            uploadFile(dosyaUrl + '/api/Dosya/UploadFile', 'ArabaResimEkle', 'resim');
-            Veri_Ekle(url + '/api/Araba/Ekle', 'frmEkle');
+            uploadFileForAraba(dosyaUrl + '/api/Dosya/UploadFile', 'ArabaResimEkle', 'resim');
         });
         $('#btnSil').click(function () {
             var data = $('#ArabaListesi').bootsrapTable('getSelections')[0];
@@ -170,4 +170,31 @@
             });
         });
     });
+    function uploadFileForAraba(_url, id, name) {
+        var files = document.getElementById(id).files;
+        if (files.length > 0) {
+            if (window.FormData !== undefined) {
+                var data = new FormData();
+                for (var i = 0; i < files.length; i++) {
+                    data.append(name + i, files[i]);
+                }
+                $.ajax({
+                    method: 'POST',
+                    url: _url,
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (result) {
+                        $('#dosyaYolu').val(result);
+                        Veri_Ekle(url + '/api/Araba/Ekle', 'frmEkle');
+                        alert('Dosya Yüklendi');
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        alert('HATA');
+                    }
+                });
+            }
+        }
+    };
 </script>

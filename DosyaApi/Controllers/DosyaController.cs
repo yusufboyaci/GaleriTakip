@@ -33,7 +33,7 @@ namespace DosyaApi.Controllers
                     item.CopyTo(fs);
                     fs.Flush();
                 }
-                return Json("Dosyanız yüklenmiştir.");
+                return Json(item.FileName);
             }
             return Json("Lütfen tekrar deneyiniz.");
         }

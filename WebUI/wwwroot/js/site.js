@@ -44,7 +44,7 @@ function Veri_Ekle(_url, id, _data = null) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function (result) {
-            alert('Ekleme yapıldı');
+            alert('Verileriniz başarı ile eklenmiştir!');
             window.location.reload();
         },
         error: function (err) {
@@ -161,11 +161,9 @@ function GaleriListesi_Listele(_url, id_1, id_2) {
         success: function (result) {
             for (var i = 0; i < result.length; i++) {
                 obj1.append(
-                    /*`<option name="galeriAd" value="${result[i].id}">${result[i].ad}</option>`*/
                     `<option value="${result[i].id}">${result[i].ad}</option>`
                 );
                 obj2.append(
-                    //`<option name="galeriAdres" value="${result[i].id}">${result[i].adres}</option>`
                     `<option value="${result[i].id}">${result[i].adres}</option>`
                 );
             }
@@ -175,7 +173,7 @@ function GaleriListesi_Listele(_url, id_1, id_2) {
             alert('HATA');
         }
     });
-}
+};
 //Dosya yükleme için kullanılan metottur.
 function uploadFile(_url, id, name) {
     var files = document.getElementById(id).files;
