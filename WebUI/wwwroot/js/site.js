@@ -9,7 +9,7 @@ $(document).ready(function () {
             $("div.loading").hide();
         });
     }, 500);
-})
+});
 function Gonder(lokasyon) {
     window.location.href = lokasyon;
 };
