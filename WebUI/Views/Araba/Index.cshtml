@@ -20,7 +20,7 @@
             <th data-field="ucret">Fiyat</th>
             <th data-field="stok">Miktar</th>
             <th data-field="birim">Birim</th>
-            <th data-field="DosyaYolu">Resim</th>
+            <th data-field="DosyaYolu" data-formatter="dosyaFormatter">Resim</th>
             <th data-field="galeriAd">Galeri Adı</th>
             <th data-field="galeriAdres">Galeri Adres</th>
         </tr>
@@ -143,6 +143,11 @@
     var url = '@ViewBag.ArabaUrl';
     var galeriUrl = '@ViewBag.GaleriUrl';
     var dosyaUrl = '@ViewBag.DosyaUrl';
+    //images in yanına veri tabanında kayıtlı olan resim yolu çekilecek ajax ile
+    function dosyaFormatter() {
+        return '<img src="~/images/ " class="rounded-circle" width="150" />';
+    }
+
     $(document).ready(function () {
         Veri_Listele(url + '/api/Araba/ArabaVeGaleriTablosuListele', 'ArabaListesi');
         $('#btnEkleModal').click(function () {
