@@ -17,10 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArabaApi", "ArabaApi\ArabaA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlCodes", "SqlCodes", "{44EA7BD6-5542-4616-9375-F14113B19FD5}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\OneDrive\Masaüstü\V_ArabaVeGaleriTablosuSqlCode.sql = ..\..\..\..\OneDrive\Masaüstü\V_ArabaVeGaleriTablosuSqlCode.sql
+		SqlCodes\V_ArabaVeGaleriTablosuSqlCode.sql = SqlCodes\V_ArabaVeGaleriTablosuSqlCode.sql
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DosyaApi", "DosyaApi\DosyaApi.csproj", "{8EFF32F7-B2FA-4DA2-89E2-D2DF63702392}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DosyaApi", "DosyaApi\DosyaApi.csproj", "{8EFF32F7-B2FA-4DA2-89E2-D2DF63702392}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
