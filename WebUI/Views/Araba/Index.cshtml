@@ -143,9 +143,9 @@
     var url = '@ViewBag.ArabaUrl';
     var galeriUrl = '@ViewBag.GaleriUrl';
     var dosyaUrl = '@ViewBag.DosyaUrl';
-    //images in yanına veri tabanında kayıtlı olan resim yolu çekilecek ajax ile
-    function dosyaFormatter() {
-        return '<img src="~/images/ " class="rounded-circle" width="150" />';
+    var webUIUrl = '@ViewBag.WebUIUrl';
+    function dosyaFormatter(value) {
+        return '<img src="~/images/"' + value + ' class="rounded-circle" width="150" />';
     }
 
     $(document).ready(function () {
@@ -154,7 +154,8 @@
             GaleriListesi_Listele(galeriUrl + '/api/Galeri/Listele', 'ArabaGaleriEkle', 'ArabaGaleriAdresEkle');
         });
         $('#btnEkle').click(function () {
-            uploadFileForAraba(dosyaUrl + '/api/Dosya/UploadFile', 'ArabaResimEkle', 'resim');
+            //uploadFileForAraba(dosyaUrl + '/api/Dosya/UploadFile', 'ArabaResimEkle', 'resim');
+            uploadFileForAraba(webUIUrl + '/Resim/AddImageFile', 'ArabaResimEkle', 'resim');
         });
         $('#btnSil').click(function () {
             var data = $('#ArabaListesi').bootstrapTable('getSelections')[0];

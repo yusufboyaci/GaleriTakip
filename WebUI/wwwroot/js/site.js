@@ -174,7 +174,7 @@ function GaleriListesi_Listele(_url, id_1, id_2) {
         }
     });
 };
-//Dosya yükleme için kullanılan metottur.
+//Dosya yükleme için kullanılan metottur. https://www.findandsolve.com/articles/upload-file-using-ajax-in-asp-dot-net-core-dot-net-5 sitesinde anlatıyor
 function uploadFile(_url, id, name) {
     var files = document.getElementById(id).files;
     if (files.length > 0) {
@@ -200,3 +200,9 @@ function uploadFile(_url, id, name) {
         }
     }
 };
+//function GetFile(_url, id) {
+//    $.ajax({
+//        method: 'GET',
+
+//    });
+//};
