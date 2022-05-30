@@ -157,11 +157,11 @@
             uploadFileForAraba(dosyaUrl + '/api/Dosya/UploadFile', 'ArabaResimEkle', 'resim');
         });
         $('#btnSil').click(function () {
-            var data = $('#ArabaListesi').bootsrapTable('getSelections')[0];
+            var data = $('#ArabaListesi').bootstrapTable('getSelections')[0];
             Veri_Sil(url + '/api/Araba/Sil', data);
         });
         $('#btnGuncelleModal').click(function () {
-            var data = $('#GaleriListesi').bootsrapTable('getSelections')[0].id;
+            var data = $('#GaleriListesi').bootstrapTable('getSelections')[0].id;
             Veri_Getir_ArabaIcin(url + '/api/Araba/Getir', data);
             $('#btnGuncelle').click(function () {
                 var ad = $('#ArabaAdGuncelle').val();
