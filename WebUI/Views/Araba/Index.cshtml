@@ -155,7 +155,7 @@
         });
         $('#btnEkle').click(function () {
             //uploadFileForAraba(dosyaUrl + '/api/Dosya/UploadFile', 'ArabaResimEkle', 'resim');
-            uploadFileForAraba(webUIUrl + '/Resim/AddImageFile', 'ArabaResimEkle', 'resim');
+            uploadFileForAraba('Resim/AddImageFile.cshtml', 'ArabaResimEkle', 'resim');
         });
         $('#btnSil').click(function () {
             var data = $('#ArabaListesi').bootstrapTable('getSelections')[0];

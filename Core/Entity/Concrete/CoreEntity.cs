@@ -36,4 +36,11 @@ namespace Core.Entity.Concrete
         public int? ModifiedBy { get; set; }
 
     }
+
+    //public class ChartBilgi<T1, T2, T3> where T1 : class, new() where T2 : class, new() where T3 : class, new()
+    //{
+    //    List<T1> Grid { get; set; }
+    //    List<T2> Chart { get; set; }
+    //    List<T3> Toplam { get; set; }
+    //}//Generik çok typle lı class tanımlama
 }
