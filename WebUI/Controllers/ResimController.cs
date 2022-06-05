@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebUI.Controllers
 {
+    [Route("[controller]")]
     public class ResimController : Controller
     {
         private readonly IWebHostEnvironment _env;
