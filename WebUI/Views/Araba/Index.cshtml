@@ -146,7 +146,7 @@
     var webUIUrl = '@ViewBag.WebUIUrl';
     function dosyaFormatter(value, row, index, field) {
         console.log(row);
-        return '<img src="' + webUIUrl + '~/files/' + row.dosyaYolu + '" class="rounded-circle" width="150" />';
+        return '<img src="' + webUIUrl + '/files/' + row.dosyaYolu + '" class="rounded-circle" width="150" />';
     }
 
     $(document).ready(function () {
