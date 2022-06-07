@@ -200,9 +200,3 @@ function uploadFile(_url, id, name) {
         }
     }
 };
-//function GetFile(_url, id) {
-//    $.ajax({
-//        method: 'GET',
-
-//    });
-//};

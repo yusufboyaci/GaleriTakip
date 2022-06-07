@@ -4,4 +4,26 @@
 }
 
 <h1>Müşteriler</h1>
-
+<table id="MusteriListesi"
+       data-toggle="MusteriListesi"
+       data-click-to-select="true"
+       data-show-colums="true"
+       data-checkbox-header="false"
+       data-multiple-select-row="true"
+       data-toolbar="#toolbar"
+       data-pagination="true"
+       data-search="true">
+    <thead>
+        <tr>
+            <th id="chk" data-field="state" data-checkbox="true"></th>
+            <th data-field="ad">Araba</th>
+            <th data-field="ucret">Fiyat</th>
+            <th data-field="stok">Miktar</th>
+            <th data-field="birim">Birim</th>
+            <th data-field="DosyaYolu" data-formatter="dosyaFormatter">Resim</th>
+            <th data-field="galeriAd">Galeri Adı</th>
+            <th data-field="galeriAdres">Galeri Adres</th>
+        </tr>
+    </thead>
+    <tbody><tr></tr></tbody>
+</table>
