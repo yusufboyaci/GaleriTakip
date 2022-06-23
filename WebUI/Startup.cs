@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebUI.ApiServices;
 
 namespace WebUI
 {
@@ -24,6 +25,10 @@ namespace WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddHttpClient<LoginApiService>(o =>
+            {
+                o.BaseAddress = new Uri("https://localhost:44373/api/");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
