@@ -50,19 +50,27 @@ namespace ArabaApi.Controllers
             db.Remove(nesne);
             return Json("İşlem başarılı");
         }
-        [HttpGet("Login")]
-        public IActionResult Login(string kullaniciAdi, string sifre)
+
+        //[HttpGet("Login")]
+        //public IActionResult Login(string kullaniciAdi, string sifre)
+        //{
+        //    bool result = db.KimlikKontrolEt(kullaniciAdi, sifre);
+        //    if (result)
+        //    {
+        //        Musteri nesne = db.MusteriyiKullaniciAdiylaGetir(kullaniciAdi);
+        //        return Json(nesne);
+        //    }
+        //    else
+        //    {
+        //        return Json("Böyle bir kullanıcı bulunmamaktadır");
+        //    }
+        //}
+
+        [HttpGet("Login/{nesne}")]
+        public IActionResult Login(Musteri nesne)
         {
-            bool result = db.KimlikKontrolEt(kullaniciAdi, sifre);
-            if (result)
-            {
-                Musteri nesne = db.MusteriyiKullaniciAdiylaGetir(kullaniciAdi);
-                return Json(nesne);
-            }
-            else
-            {
-                return Json("Böyle bir kullanıcı bulunmamaktadır");
-            }
+            bool result = db.KimlikKontrolEt(nesne.KullaniciAdi, nesne.Password);
+            return Json(result);
         }
     }
 }

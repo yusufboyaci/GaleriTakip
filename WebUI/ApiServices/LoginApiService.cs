@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -14,12 +15,25 @@ namespace WebUI.ApiServices
         {
             _httpClient = httpClient;
         }
-        public async Task<LoginApiService> GetirMusteri(string kullaniciAdi, string sifre)
+        public async Task<bool> GetirMusteri(string kullaniciAdi, string sifre)
         {
+            //var response = await _httpClient.GetAsync($"")
             LoginViewModel nesne = new LoginViewModel();
             nesne.KullaniciAdi = kullaniciAdi;
             nesne.Sifre = sifre;
-            var response = await _httpClient.GetAsync($"Musteri/{nesne}");
+            //HttpRequestMessage request = nesne
+            //var response = await _httpClient.SendAsync()
+
+            HttpResponseMessage response = await _httpClient.GetAsync($"Musteri/Login/{nesne}");
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<bool>(await response.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }

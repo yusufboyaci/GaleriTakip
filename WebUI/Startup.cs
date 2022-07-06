@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +27,19 @@ namespace WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(opt =>
+            {
+                opt.Cookie.Name = "GaleriTakipCookie";
+                opt.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                opt.Cookie.HttpOnly = true;
+                opt.LoginPath = "/Login/Login";
+                opt.LogoutPath = "/Login/LogOut";
+                opt.AccessDeniedPath = "";//Access Denied sayfasý araþtýr mvcblog projede güzel bir tane var.
+            });
+            services.AddAuthorization(opt =>
+            {
+                opt.AddPolicy("UserOnly", policy => policy.RequireClaim("User"));
+            });
             services.AddHttpClient<LoginApiService>(o =>
             {
                 o.BaseAddress = new Uri("https://localhost:44373/api/");
