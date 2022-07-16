@@ -24,7 +24,9 @@ namespace WebUI.ApiServices
             //HttpRequestMessage request = nesne
             //var response = await _httpClient.SendAsync()
 
-            HttpResponseMessage response = await _httpClient.GetAsync($"Musteri/Login/{nesne}");
+            //415 hatası alıyorsun ---- 415 unsupported media type
+            //HttpResponseMessage response = await _httpClient.GetAsync($"/api/Musteri/Login/{nesne}");
+            HttpResponseMessage response = await _httpClient.PostAsync($"/api/Musteri/Login", nesne);
             if (response.IsSuccessStatusCode)
             {
                 return JsonConvert.DeserializeObject<bool>(await response.Content.ReadAsStringAsync());
