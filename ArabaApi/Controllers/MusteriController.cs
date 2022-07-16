@@ -66,7 +66,8 @@ namespace ArabaApi.Controllers
         //    }
         //}
 
-        [HttpGet("Login/{nesne}")]
+        //[HttpGet("Login/{nesne}")]
+        [HttpPost("Login")]
         public IActionResult Login(Musteri nesne)
         {
             bool result = db.KimlikKontrolEt(nesne.KullaniciAdi, nesne.Password);
