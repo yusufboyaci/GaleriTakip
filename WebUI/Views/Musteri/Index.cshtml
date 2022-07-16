@@ -16,14 +16,231 @@
     <thead>
         <tr>
             <th id="chk" data-field="state" data-checkbox="true"></th>
-            <th data-field="ad">Araba</th>
-            <th data-field="ucret">Fiyat</th>
-            <th data-field="stok">Miktar</th>
-            <th data-field="birim">Birim</th>
+            <th data-field="ad">Ad</th>
+            <th data-field="soyad">Soyad</th>
+            <th data-field="kullaniciAdi">Kullanıcı Adı</th>
+            <th data-field="password">Şifre</th>
+            <th data-field="email">Mail Adresiniz</th>
+            <th data-field="adres">Adresiniz</th>
+            <th data-field="telefonNumarasi">Adresiniz</th>
             <th data-field="DosyaYolu" data-formatter="dosyaFormatter">Resim</th>
-            <th data-field="galeriAd">Galeri Adı</th>
-            <th data-field="galeriAdres">Galeri Adres</th>
+            <th data-field="dogumGunu">Doğum Tarihi</th>
+            <th data-field="role" data-formatter="roleFormatter">Role</th>
         </tr>
     </thead>
     <tbody><tr></tr></tbody>
 </table>
+<!-- Button modal -->
+<button id="btnEkleModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ekleModal">
+    Kayıt
+</button>
+<button id="btnGuncelleModal" type="button" class="btn btn-info" data-toggle="modal" data-target="#guncelleModal">
+    Guncelle
+</button>
+<button id="btnSil" class="btn btn-danger">Sil</button>
+
+<!-- Modal Ekleme İçin-->
+<div class="modal fade" id="ekleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Kayıt İşlemi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frmEkle">
+                    <div class="form-group">
+                        <label>Ad</label>
+                        <input type="text" class="form-control" id="MusteriAd" name="ad">
+                    </div>
+                    <div class="form-group">
+                        <label>Soyad</label>
+                        <input type="text" class="form-control" id="MusteriSoyad" name="soyad">
+                    </div>
+                    <div class="form-group">
+                        <label>Kullanıcı Adı</label>
+                        <input type="text" class="form-control" id="KullaniciAdi" name="kullaniciAdi">
+                    </div>
+                    <div class="form-group">
+                        <label>Şifre</label>
+                        <input type="text" class="form-control" id="Password" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label>Mail Adresi</label>
+                        <input type="text" class="form-control" id="Email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label>Adres</label>
+                        <input type="text" class="form-control" id="Adres" name="adres">
+                    </div>
+                    <div class="form-group">
+                        <label>Tel:</label>
+                        <input type="text" class="form-control" id="TelefonNumarasi" name="telefonNumarasi">
+                    </div>
+                    <div class="form-group">
+                        <label>Resim</label>
+                        <input type="file" class="form-control-file" id="MusteriResimEkle" name="resim" accept=".jpg,.png,.gif,.jpeg" />
+                        <input type="hidden" name="dosyaYolu" id="dosyaYolu" />
+                    </div>
+                    <div class="form-group">
+                        <label>Doğum Tarihi</label>
+                        <input type="datetime-local" class="form-control" id="DogumGunu" name="dogumGunu">
+                    </div>
+                    <div class="form-group">
+                        <label>Kullanıcı Rolü</label>
+                        <select class="form-control" id="Role">
+                            <option name="role" value="0">None</option>
+                            <option name="role" value="1">Member</option>
+                            <option name="role" value="2">Admin</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <button id="btnEkle" type="button" class="btn btn-primary">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Güncelleme İçin -->
+<div class="modal fade" id="guncelleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Güncelleme İşlemi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frmGuncelle">
+                    <div class="form-group">
+                        <label>Ad</label>
+                        <input type="text" class="form-control" id="MusteriAdGuncelle" name="ad">
+                    </div>
+                    <div class="form-group">
+                        <label>Soyad</label>
+                        <input type="text" class="form-control" id="MusteriSoyadGuncelle" name="soyad">
+                    </div>
+                    <div class="form-group">
+                        <label>Kullanıcı Adı</label>
+                        <input type="text" class="form-control" id="KullaniciAdiGuncelle" name="kullaniciAdi">
+                    </div>
+                    <div class="form-group">
+                        <label>Şifre</label>
+                        <input type="text" class="form-control" id="PasswordGuncelle" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label>Mail Adresi</label>
+                        <input type="text" class="form-control" id="EmailGuncelle" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label>Adres</label>
+                        <input type="text" class="form-control" id="AdresGuncelle" name="adres">
+                    </div>
+                    <div class="form-group">
+                        <label>Tel:</label>
+                        <input type="text" class="form-control" id="TelefonNumarasiGuncelle" name="telefonNumarasi">
+                    </div>
+                    <div class="form-group">
+                        <label>Resim</label>
+                        <input type="file" class="form-control-file" id="MusteriResimGuncelle" name="resim" accept=".jpg,.png,.gif,.jpeg" />
+                        <input type="hidden" name="dosyaYolu" id="dosyaYoluGuncelle" />
+                    </div>
+                    <div class="form-group">
+                        <label>Doğum Tarihi</label>
+                        <input type="datetime-local" class="form-control" id="DogumGunuGuncelle" name="dogumGunu">
+                    </div>
+                    <div class="form-group">
+                        <label>Kullanıcı Rolü</label>
+                        <select class="form-control" id="RoleGuncelle">
+                            <option name="role" value="0">None</option>
+                            <option name="role" value="1">Member</option>
+                            <option name="role" value="2">Admin</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <button id="btnGuncelle" type="button" class="btn btn-primary">Guncelle</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var url = '@ViewBag.ArabaUrl';
+    var webUrl = '@ViewBag.WebUIUrl';
+    $(document).ready(function () {
+        Veri_Listele(url + '/api/Musteri/Listele', 'MusteriListesi');
+        $('#btnEkle').click(function () {
+            uploadFileForMusteri(webUrl + '/Resim/AddImageFile', 'MusteriResimEkle', 'resim', 'dosyaYolu');
+        });
+        $('#btnSil').click(function () {
+            var data = $('#MusteriListesi').bootstrapTable('getSelections')[0];
+            Veri_Sil(url + '/api/Musteri/Sil', data);
+        });
+        $('#btnGuncelleModal').click(function () {
+            var data = $('#MusteriListesi').bootstrapTable('getSelections')[0].id;
+            Veri_Getir_MusteriIcin(url + '/api/Musteri/Getir', data);
+            $('#btnGuncelle').click(function () {
+                var ad = $('#MusteriAdGuncelle').val();
+                var soyad = $('#MusteriSoyadGuncelle').val();
+                var kullaniciAdi = $('#KullaniciAdiGuncelle').val();
+                var password = $('#PasswordGuncelle').val();
+                var email = $('#EmailGuncelle').val();
+                var adres = $('#AdresGuncelle').val();
+                var telefonNumarasi = $('#TelefonNumarasiGuncelle').val();
+                var resim = $('#MusteriResimGuncelle').val();
+                var dogumGunu = $('#DogumGunuGuncelle').val();
+                var role = $('#RoleGuncelle option').val();
+                const musteri = new MusteriTextBoxDoldur(data, ad, soyad, kullaniciAdi, password, email, adres, telefonNumarasi, resim, dogumGunu, role);
+                Veri_Guncelle(url + '/api/Musteri/Guncelle', musteri);
+            });
+        });
+    });
+    function uploadFileForMusteri(_url, id, name, dosyaId) {
+        var files = document.getElementById(id).files;
+        if (files.length > 0) {
+            if (window.FormData !== undefined) {
+                var data = new FormData();
+                for (var i = 0; i < files.length; i++) {
+                    data.append(name + i, files[i]);
+                }
+                $.ajax({
+                    method: 'POST',
+                    url: _url,
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (result) {
+                        $('#' + dosyaId).val(result);
+                        Veri_Ekle(url + '/api/Musteri/Ekle', 'frmEkle');
+                        alert('Dosya Yüklendi');
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        alert('HATA');
+                    }
+                });
+            }
+        }
+    };
+    function roleFormatter(value, row, index) {
+        if (value == 0) {
+            return '<p>None</p>'
+        } else if (value == 1) {
+            return '<p>Member</p>'
+        } else if (value == 2) {
+            return '<p>Admin</p>'
+        }
+    };
+    function dosyaFormatter(value, row, index, field) {
+        console.log(row);
+        return '<img src="' + webUrl + '/files/' + row.dosyaYolu + '" class="rounded-circle" width="150" />';
+    };
+</script>

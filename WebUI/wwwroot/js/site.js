@@ -200,3 +200,41 @@ function uploadFile(_url, id, name) {
         }
     }
 };
+function Veri_Getir_MusteriIcin(_url, data) {
+    $.ajax({
+        url: _url,
+        method: 'GET',
+        dataType: 'json',
+        data: { id: data },
+        async: false,
+        success: function (result) {
+            $('#MusteriAdGuncelle').val(result.ad);
+            $('#MusteriSoyadGuncelle').val(result.soyad);
+            $('#KullaniciAdiGuncelle').val(result.kullaniciAdi);
+            $('#PasswordGuncelle').val(result.password);
+            $('#EmailGuncelle').val(result.email);
+            $('#AdresGuncelle').val(result.adres);
+            $('#TelefonNumarasiGuncelle').val(result.telefonNumarasi);
+            $('#MusteriResimGuncelle').val(result.resim);
+            $('#DogumGunuGuncelle').val(result.dogumGunu);
+            $('#RoleGuncelle option').val(result.role);
+        },
+        error: function (err) {
+            console.log(err);
+            alert('HATA');
+        }
+    });
+};
+function MusteriTextBoxDoldur(id, ad, soyad, kullaniciAdi, password, email, adres, telefonNumarasi, resim, dogumGunu, role) {
+    this.id = id;
+    this.ad = ad;
+    this.soyad = soyad;
+    this.kullaniciAdi = kullaniciAdi;
+    this.password = password;
+    this.email = email;
+    this.adres = adres;
+    this.telefonNumarasi = telefonNumarasi;
+    this.resim = resim;
+    this.dogumGunu = dogumGunu;
+    this.role = role;
+};

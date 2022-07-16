@@ -9,8 +9,8 @@
     <link href="~/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" />
     <link href="~/css/dashboard.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/js/JQUERYserailizeJson.js"></script>
     <script src="~/ckeditor/ckeditor.js"></script>
     <script src="~/bootstrap-table/bootstrap-table.min.js"></script>
@@ -26,107 +26,110 @@
         </button>
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <ul class="navbar-nav px-3">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <li class="nav-item text-nowrap">
+
+            @*<li class="nav-item text-nowrap">
                     <a class="nav-link" href="#">Sign in</a>
-                </li>
-            }
-            else
-            {
-                <li class="nav-item text-nowrap">
-                    <a class="nav-link" href="#">Sign out</a>
-                </li>
-            }
+                </li>*@
+           
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#">Sign out</a>
+            </li>
+         
 
         </ul>
     </nav>
     <div class="container-fluid">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse dvLayout_Menu">
-            <div class="sidebar-sticky pt-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/Home/Index">
-                            <span data-feather="home"></span>
-                            Dashboard <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Siparis/Index">
-                            <span data-feather="file"></span>
-                            Siparişler
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Araba/Index">
-                            <span class="fa-solid fa-car"></span>
-                            Arabalar
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Musteri/Index">
-                            <span data-feather="users"></span>
-                            Müşteriler
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="bar-chart-2"></span>
-                            Raporlar
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="slk" class="nav-link" href="/Galeri/Index">
-                            <span data-feather="layers"></span>
-                            Galeriler
-                        </a>
-                    </li>
-                </ul>
+        @if (User.Identity.IsAuthenticated)
+        {<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse dvLayout_Menu">
+                <div class="sidebar-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/Home/Index">
+                                <span data-feather="home"></span>
+                                Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Siparis/Index">
+                                <span data-feather="file"></span>
+                                Siparişler
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Araba/Index">
+                                <span class="fa-solid fa-car"></span>
+                                Arabalar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Musteri/Index">
+                                <span data-feather="users"></span>
+                                Müşteriler
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="bar-chart-2"></span>
+                                Raporlar
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="slk" class="nav-link" href="/Galeri/Index">
+                                <span data-feather="layers"></span>
+                                Galeriler
+                            </a>
+                        </li>
+                    </ul>
 
-                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Saved reports</span>
-                    <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                        <span data-feather="plus-circle"></span>
-                    </a>
-                </h6>
-                <ul class="nav flex-column mb-2">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Current month
+                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Saved reports</span>
+                        <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+                            <span data-feather="plus-circle"></span>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Last quarter
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Social engagement
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="file-text"></span>
-                            Sipariş Detayları
-                        </a>
-                    </li>
-                </ul>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span>
+                                Current month
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span>
+                                Last quarter
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span>
+                                Social engagement
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span>
+                                Sipariş Detayları
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        }
+        else
+        {
+        }
+            <div class="row">
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                    @RenderBody()
+                </main>
             </div>
-        </nav>
-        <div class="row">
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-                @RenderBody()
-            </main>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
-    <script src="~/js/dashboard.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+   
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+        <script src="~/js/dashboard.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
 </html>

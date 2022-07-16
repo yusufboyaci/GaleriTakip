@@ -1,6 +1,8 @@
 ﻿using Core.Entity.Concrete;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,8 @@ namespace Entities
         public string Adres { get; set; }
         public string TelefonNumarasi { get; set; }
         public string DosyaYolu { get; set; }
+        [NotMapped]
+        public IFormFile Resim { get; set; }
         public Role? Role { get; set; }
         public DateTime? DogumGunu { get; set; }
         public virtual List<Siparis> Siparisler { get; set; }
