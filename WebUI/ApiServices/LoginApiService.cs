@@ -24,12 +24,7 @@ namespace WebUI.ApiServices
             nesne.Sifre = sifre;
             string myContent = JsonConvert.SerializeObject(nesne);
             HttpContent httpContent = new StringContent(myContent, Encoding.UTF8, "application/json");
-            //HttpRequestMessage request = nesne
-            //var response = await _httpClient.SendAsync()
-
-            //415 hatası alıyorsun ---- 415 unsupported media type
-            //HttpResponseMessage response = await _httpClient.GetAsync($"/api/Musteri/Login/{nesne}");
-            HttpResponseMessage response = await _httpClient.PostAsync($"/api/Musteri/Login", httpContent);
+            HttpResponseMessage response = await _httpClient.PostAsync($"Musteri/Login", httpContent);
             if (response.IsSuccessStatusCode)
             {
                 return JsonConvert.DeserializeObject<bool>(await response.Content.ReadAsStringAsync());
@@ -38,7 +33,6 @@ namespace WebUI.ApiServices
             {
                 return false;
             }
-
         }
     }
 }

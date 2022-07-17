@@ -36,14 +36,14 @@ namespace WebUI.Controllers
                 ClaimsIdentity userIdentity = new ClaimsIdentity(claims, "login");
                 ClaimsPrincipal userPrincipal = new ClaimsPrincipal(userIdentity);
                 await HttpContext.SignInAsync(userPrincipal);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Araba");
             }
             return View();
         }
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Login");
         }
     }
 }

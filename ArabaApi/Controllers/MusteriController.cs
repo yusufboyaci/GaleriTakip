@@ -1,4 +1,5 @@
-﻿using DataAccess.Context;
+﻿using ArabaApi.ViewModels;
+using DataAccess.Context;
 using DataAccess.Repositories.Concrete;
 using Entities;
 using Microsoft.AspNetCore.Http;
@@ -66,11 +67,10 @@ namespace ArabaApi.Controllers
         //    }
         //}
 
-        //[HttpGet("Login/{nesne}")]
         [HttpPost("Login")]
-        public IActionResult Login(Musteri nesne)
-        {
-            bool result = db.KimlikKontrolEt(nesne.KullaniciAdi, nesne.Password);
+        public IActionResult Login(MusteriLoginVM nesne)
+        {         
+            bool result = db.KimlikKontrolEt(nesne.KullaniciAdi, nesne.Sifre);
             return Json(result);
         }
     }
