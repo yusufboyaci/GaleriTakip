@@ -36,7 +36,7 @@ namespace WebUI.Controllers
                 ClaimsIdentity userIdentity = new ClaimsIdentity(claims, "login");
                 ClaimsPrincipal userPrincipal = new ClaimsPrincipal(userIdentity);
                 await HttpContext.SignInAsync(userPrincipal);
-                return RedirectToAction("Index", "Araba");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }

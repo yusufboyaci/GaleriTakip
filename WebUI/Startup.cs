@@ -33,12 +33,12 @@ namespace WebUI
                 opt.Cookie.SecurePolicy = CookieSecurePolicy.Always;
                 opt.Cookie.HttpOnly = true;
                 opt.LoginPath = "/Login/Login";
-                opt.LogoutPath = "/Login/LogOut";
+                opt.LogoutPath = "/Login/Login";
                 opt.AccessDeniedPath = "";//Access Denied sayfasý araþtýr mvcblog projede güzel bir tane var.
             });
             services.AddAuthorization(opt =>
             {
-                opt.AddPolicy("UserOnly", policy => policy.RequireClaim("User"));
+                opt.AddPolicy("MusteriOnly", policy => policy.RequireClaim("Musteri"));
             });
             services.AddHttpClient<LoginApiService>(o =>
             {
@@ -63,14 +63,14 @@ namespace WebUI
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Login}/{id?}");
             });
         }
     }
