@@ -34,12 +34,9 @@ namespace WebUI
                 opt.Cookie.HttpOnly = true;
                 opt.LoginPath = "/Login/Login";
                 opt.LogoutPath = "/Login/Login";
-                opt.AccessDeniedPath = "";//Access Denied sayfasý araþtýr mvcblog projede güzel bir tane var.
+                opt.AccessDeniedPath = "/Login/Login";
             });
-            services.AddAuthorization(opt =>
-            {
-                opt.AddPolicy("MusteriOnly", policy => policy.RequireClaim("Musteri"));
-            });
+    
             services.AddHttpClient<LoginApiService>(o =>
             {
                 o.BaseAddress = new Uri("https://localhost:44373/api/");//ArabaApi URL

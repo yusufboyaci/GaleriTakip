@@ -18,7 +18,6 @@ namespace WebUI.ApiServices
         }
         public async Task<bool> GetirMusteri(string kullaniciAdi, string sifre)
         {
-            //var response = await _httpClient.GetAsync($"")
             LoginViewModel nesne = new LoginViewModel();
             nesne.KullaniciAdi = kullaniciAdi;
             nesne.Sifre = sifre;
