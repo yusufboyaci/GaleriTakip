@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebUI.Controllers
 {
+    [Authorize]
     public class MusteriController : Controller
     {
         public IActionResult Index()

@@ -22,7 +22,7 @@
             <th data-field="password">Şifre</th>
             <th data-field="email">Mail Adresiniz</th>
             <th data-field="adres">Adresiniz</th>
-            <th data-field="telefonNumarasi">Adresiniz</th>
+            <th data-field="telefonNumarasi">Tel No:</th>
             <th data-field="DosyaYolu" data-formatter="dosyaFormatter">Resim</th>
             <th data-field="dogumGunu">Doğum Tarihi</th>
             <th data-field="role" data-formatter="roleFormatter">Role</th>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="form-group">
                         <label>Şifre</label>
-                        <input type="text" class="form-control" id="Password" name="password">
+                        <input type="password" class="form-control" id="Password" name="password">
                     </div>
                     <div class="form-group">
                         <label>Mail Adresi</label>
@@ -178,6 +178,7 @@
     $(document).ready(function () {
         Veri_Listele(url + '/api/Musteri/Listele', 'MusteriListesi');
         $('#btnEkle').click(function () {
+            event.preventDefault();
             uploadFileForMusteri(webUrl + '/Resim/AddImageFile', 'MusteriResimEkle', 'resim', 'dosyaYolu');
         });
         $('#btnSil').click(function () {
