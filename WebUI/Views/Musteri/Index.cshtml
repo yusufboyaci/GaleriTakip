@@ -90,7 +90,7 @@
                     </div>
                     <div class="form-group">
                         <label>Kullanıcı Rolü</label>
-                        <select class="form-control" id="Role">
+                        <select class="form-control" id="Role" name="role">
                             <option name="role" value="0">None</option>
                             <option name="role" value="1">Member</option>
                             <option name="role" value="2">Admin</option>
@@ -206,6 +206,18 @@
     });
     function uploadFileForMusteri(_url, id, name, dosyaId) {
         var files = document.getElementById(id).files;
+        var nesne = {};
+        nesne.ad = $('#MusteriAd').val();
+        nesne.soyad = $('#MusteriSoyad').val();
+        nesne.kullaniciAdi = $('#KullaniciAdi').val();
+        nesne.password = $('#Password').val();
+        nesne.email = $('#Email').val();
+        nesne.adres = $('#Adres').val();
+        nesne.telefonNumarasi = $('#TelefonNumarasi').val();
+        nesne.dosyaYolu = $('#dosyaYolu').val();
+        nesne.dogumGunu = $('#DogumGunu').val();
+        nesne.role = $('#Role option').val();
+
         if (files.length > 0) {
             if (window.FormData !== undefined) {
                 var data = new FormData();
@@ -220,7 +232,7 @@
                     data: data,
                     success: function (result) {
                         $('#' + dosyaId).val(result);
-                        Veri_Ekle(url + '/api/Musteri/Ekle', 'frmEkle');
+                        Veri_Ekle(url + '/api/Musteri/Ekle', 'frmEkle', nesne);
                         alert('Dosya Yüklendi');
                     },
                     error: function (err) {

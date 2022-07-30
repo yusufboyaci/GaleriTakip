@@ -62,10 +62,21 @@ namespace DataAccess.Repositories.Concrete
         {
             _context = context;
         }
+        /// <summary>
+        /// Kullanıcı adına göre müşteriyi getiren metottur.
+        /// </summary>
+        /// <param name="kullaniciAdi"></param>
+        /// <returns></returns>
         public Musteri MusteriyiKullaniciAdiylaGetir(string kullaniciAdi)
         {
             return GetByDefault(x => x.KullaniciAdi == kullaniciAdi);
         }
+        /// <summary>
+        /// Database de müşterinin kullanıcı adı ve şifresine göre kontrol eden metottur.
+        /// </summary>
+        /// <param name="kullaniciAdi"></param>
+        /// <param name="sifre"></param>
+        /// <returns></returns>
         public bool KimlikKontrolEt(string kullaniciAdi, string sifre)
         {
             return Any(x => x.KullaniciAdi == kullaniciAdi && x.Password == sifre);
