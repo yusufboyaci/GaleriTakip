@@ -44,7 +44,6 @@ function Veri_Ekle(_url, id, _data = null) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function (result) {
-             //alert('Verileriniz başarı ile eklenmiştir!');
             Swal.fire(
                 'Veriler Eklendi!',
                 'Verileriniz başarı ile eklenmiştir!',
@@ -71,8 +70,15 @@ function Veri_Sil(_url, nesne) {
         async: false,
         contentType: 'application/json; charset=utf-8',
         success: function (result) {
-            alert('Veriler Başarıyla Silindi.');
-            window.location.reload();
+            Swal.fire(
+                'Veriler Silindi!',
+                'Veriler Başarıyla Silindi!',
+                'success'
+            ).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
         },
         error: function (err) {
             console.log(err);
@@ -108,7 +114,11 @@ function Veri_Guncelle(_url, nesne) {
         var _data = JSON.stringify(nesne);
     }
     else {
-        alert('Güncelleme yapılacak alan boş geldiği için Hata meydana geldi!');
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Güncelleme yapılacak alan boş geldiği için Hata meydana geldi!',
+        })
     }
     $.ajax({
         url: _url,
@@ -117,8 +127,15 @@ function Veri_Guncelle(_url, nesne) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function (result) {
-            alert('Güncelleme işlemi başarıyla gerçekleşti!');
-            window.location.reload();
+            Swal.fire(
+                'Veriler Güncellendi!',
+                'Güncelleme işlemi başarıyla gerçekleşti!',
+                'success'
+            ).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
         },
         error: function (err) {
             console.log(err);
