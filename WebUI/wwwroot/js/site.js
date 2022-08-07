@@ -44,8 +44,16 @@ function Veri_Ekle(_url, id, _data = null) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         success: function (result) {
-            alert('Verileriniz başarı ile eklenmiştir!');
-            window.location.reload();
+             //alert('Verileriniz başarı ile eklenmiştir!');
+            Swal.fire(
+                'Veriler Eklendi!',
+                'Verileriniz başarı ile eklenmiştir!',
+                'success'
+            ).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
         },
         error: function (err) {
             console.log(err);
