@@ -12,7 +12,7 @@ namespace WebUI.Controllers
     {
         public IActionResult Index()
         {
-            ViewBag.ArabaUrl = "https://localhost:44373";
+            ViewBag.ArabaUrl = "https://localhost:44372";
             ViewBag.GaleriUrl = "https://localhost:44303";
             ViewBag.DosyaUrl = "https://localhost:44314";
             ViewBag.WebUIUrl = "https://localhost:44302";

@@ -39,7 +39,7 @@ namespace WebUI
     
             services.AddHttpClient<LoginApiService>(o =>
             {
-                o.BaseAddress = new Uri("https://localhost:44373/api/");//ArabaApi URL
+                o.BaseAddress = new Uri("https://localhost:44372/api/");//ArabaApi URL
             });
         }
 
