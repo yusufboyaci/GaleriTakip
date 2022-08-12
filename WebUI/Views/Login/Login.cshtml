@@ -42,8 +42,11 @@
     </div>
 </div>
 <script>
+    var url = '@ViewBag.ArabaUrl';
     $(document).ready(function () {
-        Veri_Ekle('')
+        $('#btnEkle').click(function () {
+            Veri_Ekle(url + '/api/Musteri/Ekle', 'frmEkle');
+        });
     });
 </script>
 

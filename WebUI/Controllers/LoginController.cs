@@ -17,12 +17,14 @@ namespace WebUI.Controllers
         {
             _loginService = loginApiService;
         }
-        public IActionResult Index()
+        public IActionResult Index() => View();
+        [HttpGet]
+        public IActionResult Login()
         {
+            ViewBag.ArabaUrl = "https://localhost:44372";
             return View();
         }
-        [HttpGet]
-        public IActionResult Login() => View();
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel nesne)
         {
