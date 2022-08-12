@@ -46,6 +46,11 @@
     $(document).ready(function () {
         $('#btnEkle').click(function () {
             Veri_Ekle(url + '/api/Musteri/Ekle', 'frmEkle');
+            //setTimeout(function () {
+            //    $("div.loading").fadeOut("slow", function () {
+            //        $("div.loading").hide();
+            //    });
+            //}, 500);
         });
     });
 </script>

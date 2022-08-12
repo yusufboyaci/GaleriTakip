@@ -18,19 +18,19 @@
                 <form id="frmEkle">
                     <div class="form-group">
                         @(Html.LabelFor(x => x.Ad))
-                        @(Html.TextBoxFor(x => x.Ad, new{ @class = "form-control", @id = "MusteriAd", @name = "ad" }))
+                        @(Html.TextBoxFor(x => x.Ad, new{ @class = "form-control"}))
                     </div>
                     <div class="form-group">
                         @(Html.LabelFor(x => x.Soyad))
-                        @(Html.TextBoxFor(x => x.Soyad, new{ @class = "form-control", @id = "MusteriSoyad", @name = "soyad" }))
+                        @(Html.TextBoxFor(x => x.Soyad, new{ @class = "form-control"}))
                     </div>
                     <div class="form-group">
                         @(Html.LabelFor(x => x.KullaniciAdi))
-                        @(Html.TextBoxFor(x => x.KullaniciAdi, new{ @class = "form-control", @id="KullaniciAdi", @name = "kullaniciAdi" }))
+                        @(Html.TextBoxFor(x => x.KullaniciAdi, new{ @class = "form-control"}))
                     </div>
                     <div class="form-group">
                         @(Html.LabelFor(x => x.Password))
-                        @(Html.PasswordFor(x => x.Password, new{ @class = "form-control", @id= "Password", @name = "password" }))
+                        @(Html.PasswordFor(x => x.Password, new{ @class = "form-control"}))
                     </div>
                 </form>
             </div>
