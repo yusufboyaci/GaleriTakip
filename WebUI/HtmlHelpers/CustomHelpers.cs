@@ -13,6 +13,15 @@ namespace WebUI.HtmlHelpers
 /// </summary>
     public static class CustomHelpers
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="htmlHelper"></param>
+        /// <param name="expression"></param>
+        /// <param name="isReadOnly"></param>
+        /// <returns></returns>
         public static HtmlString TextBoxFor<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression, bool isReadOnly)
         {
             HtmlString html = default(HtmlString);
@@ -26,6 +35,15 @@ namespace WebUI.HtmlHelpers
             }
             return html;
         }
+        /// <summary>
+        /// deneme olsun diye yazıldı sil
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="htmlHelper"></param>
+        /// <param name="expression"></param>
+        /// <param name="isReadOnly"></param>
+        /// <returns></returns>
         public static HtmlString yusuf<TModel, TValue>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TValue>> expression, bool isReadOnly)
         {
             HtmlString html = default(HtmlString);
