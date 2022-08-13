@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Müşteriler";
+}
+
+<h1>Müşteriler</h1>
+<table id="MusteriListesi"
+       data-toggle="MusteriListesi"
+       data-click-to-select="true"
+       data-show-colums="true"
+       data-checkbox-header="false"
+       data-multiple-select-row="true"
+       data-toolbar="#toolbar"
+       data-pagination="true"
+       data-search="true">
+    <thead>
+        <tr>
+            <th id="chk" data-field="state" data-checkbox="true"></th>
+            <th data-field="ad">Ad</th>
+            <th data-field="soyad">Soyad</th>
+            <th data-field="kullaniciAdi">Kullanıcı Adı</th>
+            <th data-field="password">Şifre</th>
+            <th data-field="email">Mail Adresiniz</th>
+            <th data-field="adres">Adresiniz</th>
+            <th data-field="telefonNumarasi">Tel No:</th>
+            <th data-field="DosyaYolu" data-formatter="dosyaFormatter">Resim</th>
+            <th data-field="dogumGunu">Doğum Tarihi</th>
+            <th data-field="role" data-formatter="roleFormatter">Role</th>
+        </tr>
+    </thead>
+    <tbody><tr></tr></tbody>
+</table>
+<button id="btnEkle" type="button" class="btn btn-primary">Kaydet</button>
+<button id="btnGuncelle" type="button" class="btn btn-info">Güncelle</button> 
+<button id="btnSil" class="btn btn-danger">Sil</button>
+<script>
+     var url = '@ViewBag.ArabaUrl';
+    $(document).ready(function () {
+        Veri_Listele(url + '/api/Musteri/Listele', 'MusteriListesi');
+        $('#btnEkle').click(function () {
+            Gonder('/Musteri/Ekle');
+        });
+        $('#btnGuncelle').click(function () {
+            Gonder('/Musteri/Guncelle');
+        });
+
+    });
+</script>
+

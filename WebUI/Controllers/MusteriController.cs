@@ -16,5 +16,13 @@ namespace WebUI.Controllers
             ViewBag.ArabaUrl = "https://localhost:44372";
             return View();
         }
+        public IActionResult Index_V2()
+        {
+            ViewBag.WebUIUrl = "https://localhost:44302";
+            ViewBag.ArabaUrl = "https://localhost:44372";
+            return View();
+        }
+        public IActionResult Ekle() => View();
+        public IActionResult Guncelle() => View();
     }
 }
