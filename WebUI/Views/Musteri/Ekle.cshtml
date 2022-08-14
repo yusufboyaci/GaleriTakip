@@ -4,12 +4,11 @@
     ViewData["Title"] = "Ekle";
 }
 
-<h1>Ekle</h1>
+<h1>Müşteri Bölümü</h1>
 
-<h4>MusteriViewModel</h4>
 <hr />
 <div class="col-md-12">
-    <form asp-action="Ekle">
+    <form id="frmEkle" method="post">
         <div class="row">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group col-md-6">
@@ -50,28 +49,89 @@
                 <span asp-validation-for="TelefonNumarasi" class="text-danger"></span>
             </div>
             <div class="form-group col-md-6">
-                <label asp-for="DosyaYolu" class="control-label"></label>
-                <input asp-for="DosyaYolu" class="form-control" />
-                <span asp-validation-for="DosyaYolu" class="text-danger"></span>
+                <label asp-for="Resim"></label>
+                @*<input asp-for="Resim" type="file" class="form-control-file" id="MusteriResimEkle" name="resim" accept=".jpg,.png,.gif,.jpeg" />*@
+                <input asp-for="Resim" type="file" class="form-control-file" name="resim" accept=".jpg,.png,.gif,.jpeg" />
+                @*<input asp-for="DosyaYolu" type="hidden" name="dosyaYolu" id="DosyaYolu" />*@
+                <input asp-for="DosyaYolu" type="hidden" name="dosyaYolu" />
             </div>
             <div class="form-group col-md-6">
-                <label asp-for="Role" class="control-label"></label>
-                <input asp-for="Role" class="form-control" />
-                <span asp-validation-for="Role" class="text-danger"></span>
+                <label asp-for="Role"></label>
+                <select asp-for="Role" class="form-control" id="Role" name="role">
+                    <option name="role0" value="0">None</option>
+                    <option name="role1" value="1">Member</option>
+                    <option name="role2" value="2">Admin</option>
+                </select>
             </div>
             <div class="form-group col-md-6">
                 <label asp-for="DogumGunu" class="control-label"></label>
                 <input asp-for="DogumGunu" class="form-control" />
                 <span asp-validation-for="DogumGunu" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Ekle" class="btn btn-primary" />
+            <div class="form-group col-md-6">
+                @*<input id="btnEkle" type="submit" value="Ekle" class="btn btn-primary" />*@
+                <button type="button" id="btnEkle" class="btn btn-primary"> Ekle </button>
             </div>
         </div>
     </form>
 </div>
-
 <div>
     <a asp-action="Index_V2">Back to List</a>
 </div>
+<script>
+    var url = '@ViewBag.ArabaUrl';
+     var webUrl = '@ViewBag.WebUIUrl';
+    //var nesne = {};
+    $(document).ready(function () {
 
+        $('#btnEkle').click(function () {
+            //nesne['Ad'] = $('#Ad').val();
+            //nesne['Soyad'] = $('#Soyad').val();
+            //nesne["KullaniciAdi"] = $('#KullaniciAdi').val();
+            //nesne["Password"] = $('#Password').val();
+            //nesne["Email"] = $('#Email').val();
+            //nesne["Adres"] = $('#Adres').val();
+            //nesne["TelefonNumarasi"] = $('#TelefonNumarasi').val();
+            //nesne["DosyaYolu"] = $('#DosyaYolu').val();
+            //nesne["Role"] = $('#Role').val();
+            //nesne["DogumGunu"] = $('#DogumGunu').val();
+            //uploadFileForMusteri(webUrl + '/Resim/AddImageFile', 'MusteriResimEkle', 'resim', 'DosyaYolu');
+
+            Veri_Ekle(url + '/api/Musteri/Ekle', 'frmEkle');
+        });
+    });
+    //function uploadFileForMusteri(_url, id, name, dosyaId) {
+    //    var files = document.getElementById(id).files;
+    //    var dosya = $('#' + id).val();
+    //    if (dosya != null && dosya != "") {
+
+    //        if (files.length > 0) {
+    //            if (window.FormData !== undefined) {
+    //                var data = new FormData();
+    //                for (var i = 0; i < files.length; i++) {
+    //                    data.append(name + i, files[i]);
+    //                }
+    //                $.ajax({
+    //                    method: 'POST',
+    //                    url: _url,
+    //                    contentType: false,
+    //                    processData: false,
+    //                    data: data,
+    //                    success: function (result) {
+    //                        $('#' + dosyaId).val(result);
+    //                        Veri_Ekle(url + '/api/Musteri/Ekle', 'frmEkle', nesne);
+    //                        alert('Dosya Yüklendi');
+    //                    },
+    //                    error: function (err) {
+    //                        console.log(err);
+    //                        alert('HATA');
+    //                    }
+    //                });
+    //            }
+    //        }
+    //    }
+    //    else {
+    //        Veri_Ekle(url + '/api/Musteri/Ekle', 'frmEkle', nesne);
+    //    }
+    //};
+</script>

@@ -26,7 +26,15 @@ function Veri_Listele(_url, id) {
             table.bootstrapTable({ data: liste });
         },
         error: function (err) {
-            alert('HATA');
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata...',
+                text: 'Sistem de Hata meydana geldi!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
             console.log(err);
         }
     });
@@ -56,7 +64,14 @@ function Veri_Ekle(_url, id, _data = null) {
         },
         error: function (err) {
             console.log(err);
-            alert('HATA');
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata...',
+                text: 'Sistem de Hata meydana geldi!',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                }
+            });
         }
     });
 };
@@ -82,7 +97,11 @@ function Veri_Sil(_url, nesne) {
         },
         error: function (err) {
             console.log(err);
-            alert('HATA');
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata...',
+                text: 'Sistem de Hata meydana geldi!',
+            });
         }
     });
 };
@@ -100,7 +119,11 @@ function Veri_Getir_GaleriIcin(_url, data) {
         },
         error: function (err) {
             console.log(err);
-            alert('HATA');
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata...',
+                text: 'Sistem de Hata meydana geldi!',
+            });
         }
     });
 };
@@ -139,7 +162,11 @@ function Veri_Guncelle(_url, nesne) {
         },
         error: function (err) {
             console.log(err);
-            alert('HATA');
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata...',
+                text: 'Sistem de Hata meydana geldi!',
+            });
         }
     });
 };
@@ -160,7 +187,11 @@ function Veri_Getir_ArabaIcin(_url, data) {
         },
         error: function (err) {
             console.log(err);
-            alert('HATA');
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata...',
+                text: 'Sistem de Hata meydana geldi!',
+            });
         }
     });
 };
@@ -195,7 +226,11 @@ function GaleriListesi_Listele(_url, id_1, id_2) {
         },
         error: function (err) {
             console.log(err);
-            alert('HATA');
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata...',
+                text: 'Sistem de Hata meydana geldi!',
+            });
         }
     });
 };
@@ -219,7 +254,11 @@ function uploadFile(_url, id, name) {
                 },
                 error: function (err) {
                     console.log(err);
-                    alert('HATA');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hata...',
+                        text: 'Sistem de Hata meydana geldi!',
+                    });
                 }
             });
         }
@@ -246,7 +285,11 @@ function Veri_Getir_MusteriIcin(_url, data) {
         },
         error: function (err) {
             console.log(err);
-            alert('HATA');
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata...',
+                text: 'Sistem de Hata meydana geldi!',
+            });
         }
     });
 };

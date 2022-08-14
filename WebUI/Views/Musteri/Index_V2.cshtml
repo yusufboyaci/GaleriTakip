@@ -34,7 +34,8 @@
 <button id="btnGuncelle" type="button" class="btn btn-info">Güncelle</button> 
 <button id="btnSil" class="btn btn-danger">Sil</button>
 <script>
-     var url = '@ViewBag.ArabaUrl';
+    var url = '@ViewBag.ArabaUrl';
+    var webUrl = '@ViewBag.WebUIUrl';
     $(document).ready(function () {
         Veri_Listele(url + '/api/Musteri/Listele', 'MusteriListesi');
         $('#btnEkle').click(function () {
@@ -43,7 +44,19 @@
         $('#btnGuncelle').click(function () {
             Gonder('/Musteri/Guncelle');
         });
-
     });
+    function roleFormatter(value, row, index) {
+        if (value == 0) {
+            return '<p>None</p>'
+        } else if (value == 1) {
+            return '<p>Member</p>'
+        } else if (value == 2) {
+            return '<p>Admin</p>'
+        }
+    };
+    function dosyaFormatter(value, row, index, field) {
+        console.log(row);
+        return '<img src="' + webUrl + '/files/' + row.dosyaYolu + '" class="rounded-circle" width="150" />';
+    };
 </script>
 

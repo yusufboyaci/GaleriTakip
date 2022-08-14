@@ -22,7 +22,17 @@ namespace WebUI.Controllers
             ViewBag.ArabaUrl = "https://localhost:44372";
             return View();
         }
-        public IActionResult Ekle() => View();
-        public IActionResult Guncelle() => View();
+        public IActionResult Ekle() 
+        {
+            ViewBag.WebUIUrl = "https://localhost:44302";
+            ViewBag.ArabaUrl = "https://localhost:44372";
+            return View();
+        }
+        public IActionResult Guncelle()
+        {
+            ViewBag.WebUIUrl = "https://localhost:44302";
+            ViewBag.ArabaUrl = "https://localhost:44372";
+            return View();
+        }
     }
 }

@@ -41,9 +41,10 @@ namespace WebUI.Models
         public string DosyaYolu { get; set; }
         [NotMapped]
         public IFormFile Resim { get; set; }
-        [Display(Name = "Kullanıcı Adı")]
-        [Required(ErrorMessage = "Lütfen Rolünüzü Bleirleyiniz.!")]
+        [Display(Name = "Rol")]
+        [Required(ErrorMessage = "Lütfen Rolünüzü Belirleyiniz.!")]
         public Role? Role { get; set; }
+        [Display(Name = "Doğum Günü")]
         public DateTime? DogumGunu { get; set; }
     }
 }
